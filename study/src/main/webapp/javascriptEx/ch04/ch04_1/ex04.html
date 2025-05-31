@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>내장객체 - Date</h3>
+	
+	<script type="text/javascript">
+	var now = new Date();
+	
+	console.log(typeof now); // 'object';
+	console.log(now instanceof Date); // true
+		// 해당 객체 타입이면 true
+		
+	var y = now.getFullYear();
+	var m = now.getMonth() + 1;
+	var d = now.getDate();
+	var w = now.getDay(); // 0(일)~6(토)
+	
+	var ho = now.getHours();
+	var mi = now.getMinutes();
+	var se = now.getSeconds();
+	
+	var ms = now.getTime();
+		// 1970-01-01 00:00:00.000 부터 경과 시간을 ms로 반환
+
+	var s = `${y}년 ${m}월 ${d}일 ${ho}:${mi}:${se}`;
+	console.log(s, w);
+	console.log(ms);
+		
+	</script>
+
+</body>
+</html>

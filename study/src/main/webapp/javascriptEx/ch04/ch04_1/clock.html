@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Clock</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+<div>
+	<input type="text" id="todayInput" readonly="readonly" style="border: none;">
+</div>
+
+<script type="text/javascript">
+function showClock() {
+	let now = new Date();
+	
+	let y = now.getFullYear();
+	let m = now.getMonth() + 1;
+	let d = now.getDate();
+	m = m > 9 ? m : '0' + m;
+	d = d > 9 ? d : '0' + d;
+	
+	let ho = now.getHours();
+	let mi = now.getMinutes();
+	let se = now.getSeconds();
+	ho = ho > 9 ? ho: '0' + ho;
+	mi = mi > 9 ? mi: '0' + mi;
+	se = se > 9 ? se: '0' + se;
+
+	let s = `${y}-${m}-${d} ${ho}:${mi}:${se}`;
+	
+	document.querySelector('#todayInput').value = s;
+	
+	setTimeout('showClock()', 1000);
+	
+}
+showClock();
+// window.addEventLinstener('load', () => showClock());
+</script>
+
+</body>
+</html>

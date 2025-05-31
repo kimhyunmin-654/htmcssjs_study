@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>1차원 배열</h3>
+	
+	<script type="text/javascript">
+	// 배열 리터널을 이용한 1차원 배열 생성
+	var a1 = []; // 반배열
+	var a2 = [10,20,30];
+	var a3 = [10,20,30,];
+	var a4 = [10,20,,30];
+	
+	console.log(a1.length); // 0. length : 배열요소의 수
+	console.log(a2.length); // 3
+	console.log(a3.length); // 3. 가장 마지막에 , 다음에 값이 없으면 무시
+	console.log(a4.length); // 4
+		// 10 20 underfined 30
+	
+	console.log(a2[0]); // 10. 배열 첨자는 0부터 시작
+	console.log(a2[2]); // 30
+	console.log(a2[4]); // undefined
+		// 요소수 -1 보다 큰 인덱스의 값은 undefined
+		
+	// Array() 생성자를 이용한 1차원 배열 생성
+	var b1 = new Array();
+	var b2 = new Array(5); // 크기가 5인 배열, 요소의 값은 모두 undefined
+			// 생성자에 하나의; 숫자 매개변수만 있으면 요소의 수를 나타낸다.
+	var b3 = new Array(10, 20);
+			// 생성자에 두개 이상의 매개변수는 요소의 초기값이다.
+			
+	console.log(b1.length); // 0
+	console.log(b2.length); // 5
+	console.log(b3.length); // 2
+	
+	console.log(b2[1]); // undefined
+	console.log(b3[1]); // 20
+	
+	</script>
+
+</body>
+</html>

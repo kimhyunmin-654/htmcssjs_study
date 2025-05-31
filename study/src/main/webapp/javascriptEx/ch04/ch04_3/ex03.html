@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>apply(), call()를 사용하면 효율적인 경우</h3>
+	
+	<script type="text/javascript">
+	
+	
+	// 에러 : arguments는 유사배열로 join() 메서드가 없다.
+	/*
+	function sub() {
+			console.log(arguments.join());
+		}
+	
+	sub('자바', 85, true);
+	*/
+
+	function sub() {
+		console.log(Array.prototype.join.call(arguments));
+	}
+
+	sub('자바', 85, true);
+	console.log('--------------------------');
+	
+	function sub2() {
+		console.log(new Array().join.call(arguments));
+	}
+
+	sub2('자바', 85, true);
+	
+	</script>
+
+</body>
+</html>

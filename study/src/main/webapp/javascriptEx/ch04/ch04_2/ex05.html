@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>배열 - 요소를 맨 앞 또는 가장 뒤에 추가</h3>
+	<script type="text/javascript">
+	var arr = [10, 20];
+	
+	//요소 추가
+	arr[arr.length] = 30; // 마지막에 요소 추가
+	console.log(arr.join());  // 10 20 30
+	
+	arr[4] = 50; // 존재하지 않는 인덱스에 요소 추가
+	console.log(arr.join()); // 10, 20, 30, 50
+	
+	arr[4] = 50; // 존재하지 않는 인덱스에 요소 추가
+	console.log(arr.join()); // 10, 20, 30, 50
+	console.log(arr[3]); // undefined
+	
+	arr[1] = 200; // 존재하는 인덱스에 값을 할당하면 변경
+	console.log(arr.join()); // 10, 200, 30, 50
+	
+	// 요소를 마지막에 추가
+	var arr2 = [10, 20];
+	arr2.push(30);
+	console.log(arr2.join()); // 10,20,30
+	
+	// 요소를 처음에 추가
+	var arr3 = [30, 40];
+	arr3.unshift(10, 20); // 맨앞에 새로운 요소를 추가하고 길이 반환
+	// let n = arr3.unshift(10, 20); // n : 4
+	console.log(arr3.join()); // 10,20,30,40
+	
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>내장 객체 - Date</h3>
+	
+	<script type="text/javascript">
+	var y, m;
+	
+	// 2025년 12월의 마지막 날짜 구하기
+	y = 2025;
+	m = 12;
+	var lastDay = (new Date(y, m, 0)).getDate();
+	console.log(lastDay);
+	
+	// 전달의 마지막 일자
+	var lastDay = (new Date(y, m - 1, 0)).getDate();
+	console.log(lastDay);
+	
+	
+	
+	</script>
+
+</body>
+</html>

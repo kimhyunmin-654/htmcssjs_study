@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>내장 객체-Map</h3>
+	
+	<script type="text/javascript">
+	/*
+		- MaP
+			: 키와 값을 한쌍으로 저장
+			: 키와 삽입 순서 유지
+			: 키는 중복을 허용하지 않음
+			: 객체와는 다르게 키로 모든 타입이 가능(객체, 배열, 함수등)
+			: for-of, forEach 사용 가능
+			: 많은 요소를 추가/삭제하는 경우 일반 객체 보다 우수
+	*/
+	
+	var map = new Map();
+			
+	// 값 추가
+	map.set('java', 100);
+	map.set('oracle', 90);
+	map.set('html', 100);
+	map.set('spring', 90);
+	map.set('oracle', 85);
+	
+	// 요소 수
+	console.log(map.size); // 4
+	
+	// 키 존재 여부
+	console.log(map.has('css')); // false. 존재하지 않으면 false
+	
+	// 값 가져오기 
+	console.log(map.get('css')); // undefined. 존재하지 않으면 undefined
+	console.log(map.get('oracle')); // 85
+	
+	// 키와 값 삭제
+	map.delete('spring');
+	
+	// 처음부터 순회 - 1
+	for(let [key, value] of map) {
+		console.log(key + " -> " + value);
+	}
+	console.log('------------------');
+	
+	// 처음부터 순회 - 2
+	map.forEach(function(value,key){
+		console.log(key + " -> " + value);
+	});
+	console.log('------------------');
+	
+	map.forEach((value,key) => console.log(key + " => " + value));
+	console.log('------------------');
+	
+	// 모든 요소(엔트리) 삭제
+	map.clear();
+	console.log(map.size); // 0
+	
+	// 배열을 사용하면 map 선언
+	const map2 = new Map(
+		[
+			['01', 'java'],
+			['02', 'oracle'],
+			['03', 'html'],
+			['04', 'cas'],
+			['05', 'spring'],
+			['01', 'javascript'] // 키가 동일하면 기존 값을 덮어 씀								
+		]			
+	);
+	map2.forEach((value,key) => console.log(key + " => " + value));
+	console.log('------------------');
+	
+	
+	</script>
+
+
+</body>
+</html>

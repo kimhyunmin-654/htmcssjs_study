@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>apply(), call()</h3>
+	
+	<script type="text/javascript">
+	/*
+		- apply(thisArg, [arrasArray])
+		  : 주어진 this 값과 배열(유사배열)로 제공하는 인수로 함수 호출
+		    thisArg : 함수를 호출할때 제공할 this
+		    argsArray : 함수에 인수로 전달할 배열(유사배열)
+		- call(thisArg [, [agr1],[arg2],[arg3]...])
+		  : 주어진 this 값과 각각 전달된 인수로 함수 호출
+		
+	*/
+	
+	var sum = function(a,b,c) {
+		return a + b + c;
+	};
+	
+	var s;
+	// 함수 호출
+	// 1) 일반적인 방법으로 호출
+	s = sum(10,20,30);
+	console.log(s); // 60
+	
+	// 2) apply() 함수를 이용하여 호출
+	// 함수에 전달할 인수는 배열로 넘긴다.
+	s = sum.apply(null, [1,2,3]);
+	console.log(s); // 6
+	
+	// 3) call() 함수를 이용하여 호출
+	// 함수에 전달할 인수는 함수와 동일하게 넘긴다.
+	s = sum.call(null, 1,2,3);
+	console.log(s); // 6
+	
+	// -------------------------
+	var max;
+	max = Math.max(5,6,2,3,7);
+	console.log(max);
+	
+	var nums = [5,6,2,3,7];
+	// max = Math.max(nums); // NaN
+	max = Math.max.apply(null, nums);
+	console.log(max); // 7
+	
+	var min = Math.min.apply(null, nums);
+	console.log(min); // 7
+	
+	
+	</script>
+
+</body>
+</html>

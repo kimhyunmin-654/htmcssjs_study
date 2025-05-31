@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+<style type="text/css">
+* { margin: 0; padding: 0; }
+*, *::after, *::before { box-sizing: border-box; }
+
+body { font-size: 14px; font-family: "맑은 고딕", 나눔고딕, 돋움, sans-serif; }
+
+a { color: #000; text-decoration: none; cursor: pointer; }
+a:active, a:hover { text-decoration: underline; color: #F28011; }
+
+.btn {
+	padding: 5px 10px;
+	font-size: 14px; font-family: "맑은 고딕", 나눔고딕, 돋움, sans-serif;
+	color: #333; font-weight: 500;
+	border: 1px solid #999; border-radius: 4px;
+	background-color: #fff;
+	cursor:pointer;
+	vertical-align: baseline;
+}
+.btn:active, .btn:focus, .btn:hover {
+	color:#333;
+	background-color: #f8f9fa;
+}
+.btn[disabled], fieldset[disabled] .btn {
+	pointer-events: none;
+	cursor: default;
+	opacity: .65;
+}
+
+.form-control {
+	padding: 5px 5px; 
+	font-family: "맑은 고딕", 나눔고딕, 돋움, sans-serif;
+	border: 1px solid #999; border-radius: 4px; background-color: #fff;
+	vertical-align: baseline;
+}
+.form-control[readonly] { background-color:#f8f9fa; }
+
+textarea.form-control { height: 170px; resize : none; }
+
+.form-select {
+	padding: 4px 5px; 
+	font-family: "맑은 고딕", 나눔고딕, 돋움, sans-serif;
+	border: 1px solid #999; border-radius: 4px; background-color: #fff;
+	vertical-align: baseline;
+}
+.form-select[readonly] { background-color:#f8f9fa; }
+
+textarea:focus, input:focus { outline: none; }
+input[type=checkbox], input[type=radio] { vertical-align: middle; }
+
+/* table */
+.table { width: 100%; border-spacing: 0; border-collapse: collapse; }
+.table th, .table td { padding-top: 10px; padding-bottom: 10px; }
+
+.table-border thead > tr { border-top: 2px solid #212529; border-bottom: 1px solid #ced4da; }
+.table-border tbody > tr { border-bottom: 1px solid #ced4da; }
+.table-border tfoot > tr { border-bottom: 1px solid #ced4da; }
+.td-border td { border: 1px solid #ced4da; }
+
+/* layout */
+#calendarLayout {
+	width: 280px;
+	margin: 30px auto;
+}
+#calendarLayout .subject{
+	height: 37px;
+	line-height: 37px;
+	text-align: center;
+	font-weight: 600;
+}
+
+#calendarLayout .date { cursor: pointer; }
+#calendarLayout .date:hover { color: green; }
+
+#calendarLayout table tr:first-child { background: #f8f9fa; }
+#calendarLayout table td { text-align: center; }
+#calendarLayout table td:nth-child(7n+1) { color: red; }
+#calendarLayout table td:nth-child(7n) { color: blue; }
+#calendarLayout table td.gray { color: #ccc; }
+#calendarLayout table td.today { font-weight:700; background: #E6FFFF; }
+
+#calendarLayout .footer { height: 25px; line-height: 25px;
+	text-align: right; font-size: 10px; }
+
+.subject>span, .footer>span { cursor: pointer; }
+.subject>span:hover, .footer>span:hover { color: tomato; }
+</style>
+
+<script type="text/javascript">
+function calendar(y, m) {
+	let date = new Date(y, m-1, 1);
+
+	y = date.getFullYear();
+	m = date.getMonth() + 1;
+
+	let week = ['일', '월', '화', '수', '목', '금', '토'];
+	let w = date.getDay(); // 요일 : 0~6
+	
+	// 시스템 날짜
+	let today = new Date();
+	let ny = today.getFullYear();
+	let nm = today.getMonth() + 1;
+	let nd = today.getDate();
+	
+	let out;
+	out = '<div class="subject">';
+	out += `<span onclick="calendar(${y},${m-1})">&lt;</span>&nbsp;&nbsp;&nbsp;`;
+	out += `<label>${y}년 ${m}월</label>`;
+	out += `&nbsp;&nbsp;<span onclick="calendar(${y},${m+1})">&gt;</span>`
+	out += '</div>';
+	
+	out += '<table class="table td-border">';
+	out += '<tr>';
+	for(let i = 0; i < week.length; i++) {
+		out += `<td>${week[i]}</td>`;
+	}
+	out += '</tr>';
+	
+	// 1일 앞부분 : 이전달
+	let s, n;
+	let preDate = new Date(y, m-1, 0); // 이전달의 마지막 일자
+	let preYear = preDate.getFullYear();
+	let preMonth = preDate.getMonth() + 1; 
+	let preLastDay = preDate.getDate();
+	let pre = preLastDay - w + 1;
+	s  = preYear + '-' + (preMonth>9?preMonth:'0'+preMonth) + '-';
+	out += '<tr>';
+	
+	for(let i = 0; i < w; i++) {
+		n = pre + i;
+		out += `<td class="gray date" date-date="$s + {n>9?n:'0'+n}">${n}</td>`
+	}
+	
+	let cls;
+	let lastDay = (new Date(y, m, 0)).getDate();
+	s = y + '-' + (m>9?m:'0'+m) + '-';
+	for(let i = 1; i <= lastDay; i++) {
+		cls = y===ny && m===nm && i===nd ? ' today ' : '';
+		
+		out += `<td class="${cls} date" data-date="${s + (i>9?i:'0'+i)}">${i}</td>`;
+		if(++w % 7 === 0 && i !== lastDay) {
+			w = 0;
+			out += '</tr><tr>';
+		}
+		
+	}
+	
+	// 마지막 날짜 다음
+	let nextDate = new Date(y,m,1);
+	let nextYear = nextDate.getFullYear();
+	let nextMonth = nextDate.getMonth() + 1;
+	s = nextYear + '-' + (nextMonth>9?nextMonth:'0'+nextMonth) + '-';
+	let next = 0;
+	
+	for( ; w < 7; w++) {
+		next++;
+		out += `<td class="gray date" data-date="${s + (next>9?next:'0'+next)}">${next}</td>`;
+	}
+	out += '</tr>';
+	
+	out += '</table>';
+	
+	out += `<div class="footer"><span onclick="calendar(${ny}, ${nm})">오늘날짜로</span></div>`;
+	
+	document.querySelector('#calendarLayout').innerHTML = out;
+	
+
+}
+
+/*
+window.onload = function() {
+	let today = new Date();
+	let y = today.getFullYear();
+	let m = today.getMonth() + 1;
+	
+	calendar(y, m);
+};
+*/
+
+/*
+window.onload = () => {
+	let today = new Date();
+	let y = today.getFullYear();
+	let m = today.getMonth() + 1;
+	
+	calendar(y, m);
+};
+*/
+
+// window 에 onld 이벤트 등록
+window.addEventListener('load', () => {
+	let today = new Date();
+	let y = today.getFullYear();
+	let m = today.getMonth() + 1;
+	
+	calendar(y, m);
+	
+});
+
+// 처음화면은 이벤트가 처리되지만 월을 이동하면 이벤트가 처리되지 않음
+/*
+window.addEventListener('load', () => {
+	const els = document.querySelectorAll('.date');
+	for(let el of els) {
+		el.addEventListener('click', (e) => {
+			// let date = e.target.getAttribute('data-date');
+			let date = e.target.dataset.date;
+			alert(date);
+		});
+	}
+	
+});
+*/
+
+window.addEventListener('load', () => {
+	const el = document.querySelector('#calendarLayout');
+	el.addEventListener('click', e => { 
+		if(e.target.matches('.date')) { // matches() : 요소가 특정 css 선택자와 일치하면 true 반환
+			// let date = e.target.getAttribute('data-date');
+			let date = e.target.dataset.date;
+			alert(date);
+		}		
+	});
+});
+
+
+
+</script>
+
+</head>
+<body>
+
+<div id="calendarLayout"></div>
+
+
+
+</body>
+</html>

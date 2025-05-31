@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>함수 - arrow function</h3>
+	
+	<script type="text/javascript">
+	var n;
+	
+	// 표현식 방법
+	var sub1 = function(args) {
+		return args.length;
+	};
+	
+	n = sub1('seoul');
+	console.log(n); // 5
+	
+	// 화살표 함수
+	var sub2 = (args) => { return args.length; };
+	n = sub2('seoul korea');
+	console.log(n); // 11
+	
+	// 파라미터가 하나인 경우에는 주변 괄호 생략 가능
+	var sub3 = args => { return args.length; };
+	n = sub3('java');
+	console.log(n); // 4	
+	
+	// 화살표 함수의 문장이 'return 반환값;' 만 존재하는 경우
+	// 'retrun'과 중괄호({})를 생략할 수 있다.
+	var sub4 = args => args.length;
+	n = sub4('java spring');
+	console.log(n); // 11
+	
+	/*
+	setTimeout(function() {
+		alert('안녕..');
+	}, 1000); 
+	*/
+	
+	setTimeout( () => alert('방가...'), 1000 );
+	
+	</script>
+
+</body>
+</html>

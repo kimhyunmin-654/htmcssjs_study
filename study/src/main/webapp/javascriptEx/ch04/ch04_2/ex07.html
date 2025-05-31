@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>배열 - 삭제</h3>
+	
+	<script type="text/javascript">
+	var arr1 = [10,20,30,40,50];
+	
+	// length를 이용한 마지막 요소 삭제
+	arr1.length = arr1.length - 1;
+	console.log(arr1.join());
+	
+	// 모두 삭제
+	arr1.length = 0;
+	console.log(arr1); // []
+	console.log(arr1.length); // 0
+	
+	// 마지막 요소 삭제
+	var arr2 = [10,20,30,40,50];
+	arr2.pop(); // 마지막 요소 삭제후 제거한 요소 반환. 길이 줄어듬
+	// let a = arr2.pop(); /// a <- 50
+	console.log(arr2.join());
+	console.log(arr2.length); // 4
+
+	// 처음 요소 삭제
+	var arr3 = [10,20,30,40,50];
+	arr3.shift(); // 처음요소 삭제후 제거한 요소 반환. 길이 줄어듬
+	console.log(arr3.join());
+	
+	// delete() : 값을 없앤다. 즉 값을 undefined로 설정
+	var arr4 = [10,20,30,40,50];
+	delete(arr4[2]);
+	console.log(arr4.join()); // 10,20,,40,50
+	console.log(arr4.length); // 5
+	
+	// 중간 요소 삭제
+	var arr5 = [10,20,30,40,50];
+	arr5.splice(1,3);
+	console.log(arr5.join()); // 10, 50
+	
+	
+	
+	</script>
+
+</body>
+</html>

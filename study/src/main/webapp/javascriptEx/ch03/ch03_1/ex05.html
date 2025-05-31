@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>객체 - this</h3>
+	
+	<script type="text/javascript">
+	var obj = {
+			name: '김자바',
+			msg : function() {
+				console.log(this.name); // this는 msg()를 호출한 갹체
+			}
+	};
+	obj.msg();
+	
+	// 생성자 함수에서의 this : 새로 생성되는 객체에 바인딩
+	function User(name) {
+		this.name = name;
+		this.getName = function() {
+			return this.name;
+		};
+	}
+	
+	var obj2 = new User('홍길동'); // 객체 생성
+	console.log(obj2.getName());
+	
+	// 전역변수 : 전역변수는 브라우저 최상위 객체인 window 속성
+	var user = '이자바';
+	console.log(user, window.user); // 이자바 이자바
+	
+	// 일반 함수에서의 this는 전역객체(window)
+	var sayName = function() {
+		console.log(user, this.user, window.user);
+	};
+	sayName(); // 이자바 이자바 이자바
+	
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+}
+*::after{box-sizing: border-box;} *::before {box-sizing: border-box;}
+
+.container {
+	width: 800px;
+	margin: 30px auto;
+}
+
+.btn {
+	padding: 2px 4px;
+	background-color: #FFFFFF;
+	border: 1px solid #BDBDBD;
+	border-radius: 3px;
+}
+
+.input {
+	padding: 2px 4px;
+	background-color: #FFFFFF;
+	border: 1px solid #BDBDBD;
+	border-radius: 3px;
+	text-align: center;
+}
+
+</style>
+
+
+</head>
+<body>
+
+<form name="myForm">
+	<div class="container">
+		<button type="button" class="btn" onclick="today();"> 오늘 </button>
+		<button type="button" class="btn" onclick="week();"> 1주일 </button>
+		<button type="button" class="btn" onclick="month();"> 1개월</button>
+		<button type="button" class="btn" onclick="threemonth();"> 3개월 </button>
+		<button type="button" class="btn" onclick="sixmonth();"> 6개월 </button>
+		<button type="button" class="btn" onclick="year();"> 1년</button>
+		<input type="text" name="startDate" class="input">
+		 ~ 
+		<input type="text" name="endDate" class="input">
+		<button type="button" class="btn">검색</button>		
+	</div>
+</form>
+
+<script type="text/javascript">
+// 오늘
+function today() {
+	const f = document.myForm;
+	
+	let today = new Date();
+	let year = today.getFullYear();
+	let month = (today.getMonth() + 1).toString().padStart(2, '0');
+	let day = today.getDate().toString().padStart(2, '0');
+	let yyyymmdd = `${year}-${month}-${day}`;
+	
+	f.startDate.value = yyyymmdd;
+	f.endDate.value = yyyymmdd;
+			
+}
+
+function week() {
+	const f = document.myForm;
+	
+	let today = new Date();
+	
+	let start = new Date(today);
+	start.setDate(today.getDate() - 3);
+	
+	let end = new Date(today);
+	end.setDate(today.getDate() + 3);
+	
+	let yyyymmdd = (date) => {
+		let year = date.getFullYear();
+		let month = (date.getMonth() + 1).toString().padStart(2, '0');
+		let day = date.getDate().toString().padStart(2, '0');
+		return `${year}-${month}-${day}`;
+	}
+	f.startDate.value = yyyymmdd(start);
+	f.endDate.value = yyyymmdd(end);	
+		
+}
+
+function month() {
+	const f = document.myForm;
+	
+	let today = new Date();
+	
+	let start = new Date(today);
+	start.setDate(today.getDate() - 15);
+	
+	let end = new Date(today);
+	end.setDate(today.getDate() + 15);
+	
+	let yyyymmdd = (date) => {
+		let year = date.getFullYear();
+		let month = (date.getMonth() + 1).toString().padStart(2, '0');
+		let day = date.getDate().toString().padStart(2, '0');
+		return `${year}-${month}-${day}`;
+	}
+	f.startDate.value = yyyymmdd(start);
+	f.endDate.value = yyyymmdd(end);	
+		
+}
+
+function threemonth() {
+	const f = document.myForm;
+	
+	let today = new Date();
+	
+	let start = new Date(today);
+	start.setDate(today.getDate() - 30);
+	
+	let end = new Date(today);
+	end.setDate(today.getDate() + 30);
+	
+	let yyyymmdd = (date) => {
+		let year = date.getFullYear();
+		let month = (date.getMonth() + 1).toString().padStart(2, '0');
+		let day = date.getDate().toString().padStart(2, '0');
+		return `${year}-${month}-${day}`;
+	}
+	f.startDate.value = yyyymmdd(start);
+	f.endDate.value = yyyymmdd(end);	
+		
+}
+
+function sixmonth() {
+	const f = document.myForm;
+	
+	let today = new Date();
+	
+	let start = new Date(today);
+	start.setDate(today.getDate() - 90);
+	
+	let end = new Date(today);
+	end.setDate(today.getDate() + 90);
+	
+	let yyyymmdd = (date) => {
+		let year = date.getFullYear();
+		let month = (date.getMonth() + 1).toString().padStart(2, '0');
+		let day = date.getDate().toString().padStart(2, '0');
+		return `${year}-${month}-${day}`;
+	}
+	f.startDate.value = yyyymmdd(start);
+	f.endDate.value = yyyymmdd(end);	
+		
+}
+
+function year() {
+	const f = document.myForm;
+	
+	let today = new Date();
+	
+	let start = new Date(today);
+	start.setDate(today.getDate() - 182);
+	
+	let end = new Date(today);
+	end.setDate(today.getDate() + 183);
+	
+	let yyyymmdd = (date) => {
+		let year = date.getFullYear();
+		let month = (date.getMonth() + 1).toString().padStart(2, '0');
+		let day = date.getDate().toString().padStart(2, '0');
+		return `${year}-${month}-${day}`;
+	}
+	f.startDate.value = yyyymmdd(start);
+	f.endDate.value = yyyymmdd(end);	
+		
+}
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>내장함수 - String</h3>
+	
+	<script type="text/javascript">
+		var s1, s2;
+		
+		s1 = 'seoul korea';
+		s2 = s1.length; // 문자열의 길이
+		console.log(s2); // 11
+		
+		s2 = s1.charAt(6); // 문자열에서 index 위치의 문자 변환. 인덱스는 0부터 시작
+		console.log(s2); // 'k'
+		
+		s2 = s1.substring(6, 9); // s 인덱스에서 e-1 인덱스까지의 문자열
+		console.log(s2); // 'kor'
+		
+		s2 = s1.substring(6); // s 인덱스에서 마지막 문자열 까지
+		console.log(s2); // 'korea'
+		
+		s2 = s1.substr(6,3); // s 인덱스에서 3개만 추출
+		console.log(s2); // 'kor'
+		
+		s2 = s1.indexOf('o'); // 문자열의 인덱스 반환. 없으면 -1
+		console.log(s2); // 2
+		
+		s2 = s1.lastIndexOf('o'); // 문자열을 뒤에서 부터 검색하여 인덱스 반환. 없으면 -1
+		console.log(s2); // 7	
+		
+		s2 = s1.indexOf('java');
+		console.log(s2); // -1
+		
+		s2 = s1.toUpperCase(); // 모두 대문자로 변환
+		console.log(s2);
+		
+		s2 = s1.toLowerCase(); // 모두 소문자로 변환
+		console.log(s2);
+		console.log('--------------------------');
+		
+		console.log( s1 === 'seoul'); // false
+		console.log( s1.startsWith('seoul')); // true
+		console.log( s1.startsWith('korea')); // false
+		console.log( s1.startsWith('korea', 6)); // true
+		console.log( s1.endsWith('korea')); // true
+		
+		console.log(s1.includes('kor')); // true 포함 여부
+		console.log(s1.includes('Kor')); // false
+		console.log('----------------------------');
+		
+		s1 = '	자	바	';
+		s2 = ':' + s1 + ':';
+		console.log(s2);
+		
+		s2 = ':' + s1.trim() + ':'; // 좌측, 우측 공백 제거
+		console.log(s2);
+		
+		s1 = 'javascript,css,html'; // 문자열을 구분자로 분리하여 담은 배열 반환
+		s2 = s1.split(',');
+		for(let n = 0; n < s2.length; n++) {
+			console.log(s2[n]);
+		}
+		console.log('----------------------------');
+
+		s1 = "대한 우리대한 한국 대한";
+		// s2 = s1.replace(/대한, '大韓'); // 가장 앞 하나만 치환
+		// s2 = s1.replace('대한', '大韓'); // 가장 앞 하나만 치환
+		s2 = s1.replace(/대한/g, '大韓');
+		console.log(s2);
+		
+		s1 = '대한 우리대한 한국 대한';
+		s2 = s1.replaceAll('대한', '大韓'); // 모든 대한을 치환
+		console.log(s2);
+		
+		
+		
+		
+	</script>
+
+</body>
+</html>

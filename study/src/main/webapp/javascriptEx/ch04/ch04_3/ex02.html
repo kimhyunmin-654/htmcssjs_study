@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>apply(), call()</h3>
+	
+	<script type="text/javascript">
+	var obj = {
+		name: '자바',
+		sayName: function() {
+			console.log('이름 : ' + this.name);
+		}
+	};
+	
+	var obj2 = {
+			name: '스프링'
+	};
+	
+	obj.sayName(); // 이름 : 자바
+	obj.sayName.call(); // 이름: 
+			// this가 window 객체가 된다.
+	obj.sayName.call(obj); // 이름: 자바
+		// call(), apply()의 첫번째 인수 : 함수를 호출할 때 제공할 this
+	
+	obj.sayName.call(obj2); // 이름 : 스프링
+	obj.sayName.call(null); // 이름 :
+		// this가 null이 되어 아무것도 출력 안된다.
+	
+	
+	</script>
+
+</body>
+</html>

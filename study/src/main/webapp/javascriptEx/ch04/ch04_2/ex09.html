@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>forEach</h3>
+	
+	<script type="text/javascript">
+	/*
+	  - arr.forEach(function(currentValue, index, array){ ... })
+	    : 배열의 각 요소에 대하여 한번씩 주어진 함수를 실행
+	    : break가 없으면, return false;를 해도 forEach()를 빠져나오지 못한다.
+	*/
+	var arr = [1,2,3,4,5];
+	var s = 0;
+	/*
+	arr.forEach(function(item) {
+		s += item;
+	});
+	*/
+	arr.forEach( item => s += item );
+	console.log(s);
+	console.log('----------------');
+	
+	// item:각요소값, index:각요소의 인덱스
+	arr.forEach( (item, index) => console.log(item,index) ); 
+	
+	
+	</script>
+
+</body>
+</html>

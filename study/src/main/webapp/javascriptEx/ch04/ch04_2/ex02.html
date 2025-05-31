@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+<h3>2차원 배열</h3>
+
+<script type="text/javascript">
+// 배열 리터럴을 이용한 2차원 배열
+var a1 = [[10,20,30],[7,9,11]];
+console.log(a1.length); // 2. 행수
+console.log(a1[0].length); // 3. 0행의 열수
+console.log(a1[1][2]); // 11. 2차원 배열 1행 2열의 값
+
+// Array() 생성자를 이용한 2차원 배열 선언
+var a2 = new Array(2) // 2행
+a2[0] = new Array(3); // 0행의 열수
+a2[1] = new Array(3);
+
+console.log(a2.length); // 2
+console.log(a2[0].length); // 3. 0행의 열수
+
+</script>
+
+</body>
+</html>

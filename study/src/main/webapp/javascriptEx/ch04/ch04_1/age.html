@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<p>
+		생년월일 : <input type="date" id="birth">
+	</p>
+	<p>
+		<button type="button" onclick="result()">확인</button>
+	</p>	
+	<hr>
+	
+	<div id="resultLayout"></div>
+	
+	<script type="text/javascript">
+	function getAge(dateString) {
+		let today = new Date();
+		let birthDate = new Date(dateString);
+		
+		let age = today.getFullYear() - birthDate.getFullYear();
+		let m = today.getMonth() - birthDate.getMonth();
+		if(m < 0 || (m===0 && today.getDate() < birthDate.getDate())) {
+			age--;
+		}
+		return age;
+	}
+	
+	function result() {
+		let birth = document.querySelector('#birth').value;
+		if(! birth) {
+			document.querySelector('#birth').focus();
+			return;
+		}
+		let age = getAge(birth);
+		
+		str = `<p>생년월일 : ${birth}, 나이 : ${age}</p> `
+		
+		document.getElementById('resultLayout'). innerHTML = str;
+		
+	}
+	</script>
+	
+</body>
+</html>

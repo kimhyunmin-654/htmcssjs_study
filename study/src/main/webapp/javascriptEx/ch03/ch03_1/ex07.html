@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>form 안에서의 this.form : 현재 객체의 부모 form을 나타낸다.</h3>
+	
+	<form name="myForm">
+		<p>이름 : <input type="text" name="name"></p>
+		<p>국어 : <input type="text" name="kor" ></p>
+		<p>영어 : <input type="text" name="eng" ></p>
+		<p>수학 : <input type="text" name="mat" ></p>
+		<p><button type="button" onclick="send(this.form)">확인</button></p>	
+	</form>
+	
+	<script type="text/javascript">	
+	function send(f) {
+		const els = document.querySelectorAll('form input[type=text]');
+		for(let el of els) {
+			if(! el.value.trim()) {
+				el.focus();
+				return;
+			}			
+		}
+		let name = f.name.value;
+		let kor = f.kor.value;
+		let eng = f.eng.value;
+		let mat = f.mat.value;
+		
+		alert(name + ',' + kor + ',' + eng + ',' + mat);
+	}
+	
+	</script>
+
+</body>
+</html>

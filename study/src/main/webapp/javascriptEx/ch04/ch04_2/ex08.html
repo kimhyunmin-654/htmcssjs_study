@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>배열 - 메소드</h3>
+	<script type="text/javascript">
+	var arr1 = [10,20,30,20,40];
+	var n;
+	
+	n = arr1.indexOf(20);
+	console.log('20의 인덱스 : ' + n); // 1
+
+	n = arr1.lastIndexOf(20);
+	console.log('뒤에서부터 검색한 20의 인덱스 : ' + n); // 3
+	
+	n = arr1.indexOf(200);
+	console.log('200의 인덱스 : ' + n); // -1 : 없으면
+	
+	console.log(arr1.join()); // 배열의 요소를 연결하여 하나의 문자열로 반환
+	
+	var arr2 = [10,20,30,40];
+	var a = arr2.reverse(); // 배열의 순서를 반전
+	console.log(arr2.join()); // 40,30,20,10
+	console.log(a.join()); // 40,30,20,10
+	
+	var arr3 = [10,20,30,40];
+	console.log(arr3.includes(20)); // true. 배열에 값이 존재하면 true
+	console.log(arr3.includes(2)); // false
+	
+	var arr4 = ['java', 'spring', 'html'];
+	console.log(arr4.includes('spring')); // true
+	console.log(arr4.includes('Spring')); // false
+	console.log(arr4.includes('ml')); // false
+		
+	</script>
+
+</body>
+</html>
