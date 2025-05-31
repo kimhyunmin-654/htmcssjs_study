@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>table 태그</title>
+</head>
+<body>
+	
+	<h3>table 태그</h3>
+	<pre>
+		-tr 태그 
+			: 테이블의 행을 나타냄
+			: td, th 등의 열을 결정하는 태그를 포함
+		 	: td 태그는 테이블의 데이터를 나타냄
+		 	: th 태그는 테이블의 헤더를 나타냄
+		 - 모든 tr 태그 안의 td 또는 th 태그의 수는 일치해야 함
+	</pre>
+	
+	<table>
+		<tr>
+			<td>A</td>
+			<td>B</td>
+			<td>C</td>
+		</tr>
+		<tr>
+			<td>D</td>
+			<td>E</td>
+			<td>F</td>
+		</tr>
+
+	</table>
+	<hr>
+	
+	<p>border 속성 : 테이블 및 td 태그의 테두리를 설정</p>
+	<table border="1">
+		<tr>
+			<td>A</td>
+			<td>B</td>
+			<td>C</td>
+		</tr>
+		<tr>
+			<td>D</td>
+			<td>E</td>
+			<td>F</td>
+		</tr>
+
+	</table>
+	<hr>
+	
+	<!-- th : 기본적으로 글자가 진하며, 가운데 정렬 -->
+	<table border="1" style="width: 450px;">
+
+		<tr>
+			<td width="90">A</td>
+			<td width="90">B</td>
+			<td>C</td> <!-- width를 지정하지 않으면 나머지 폭 -->
+		</tr>
+		<tr>
+			<td>D</td>
+			<td>E</td>
+			<td>F</td>
+		</tr>
+	</table>
+	<hr>	
+	
+	<!-- colspan : 가로로 합치고자하는 열의수 지정 -->
+	<table border="1" style="width: 400px;" >
+		<tr>
+			<td>A</td>
+			<td>B</td>
+			<td>C</td>
+			<td>D</td>
+		</tr>
+		
+		<tr>
+			<td>E</td>
+			<td colspan="2">F</td>
+			<td>G</td>
+		</tr>
+		<tr>
+			<td>H</td>
+			<td colspan="3">I</td>
+		</tr>		
+	</table>
+	<hr>
+	
+	<!--  rowspan : 세로로 합치고자하는 행수 지정  -->
+	<table border="1" style="width: 400px;">
+		<tr>
+			<td>A</td>
+			<td>B</td>
+			<td>C</td>
+			<td>D</td>
+		</tr>
+		<tr>
+			<td>E</td>
+			<td rowspan="2">F</td>
+			<td>G</td>
+			<td>H</td>
+		</tr>
+		<tr>
+			<td>I</td>
+			<td colspan="2">J</td>
+		</tr>				
+	</table>
+	<hr>
+	
+	<!--  border-collapse: 선의 표시방법 지정. collapse는 테두리를 하나로 합침 -->
+	<table border="1" style="width: 450px; border-collapse: collapse;">
+
+		<tr>
+			<td width="100">A</td>
+			<td width="100">B</td>
+			<td>C</td>
+		</tr>
+		<tr>
+			<td>D</td>
+			<td>E</td>
+			<td>F</td>
+		</tr>
+	</table>
+	<hr>	
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<style type="text/css">
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-size: 14px;
+	font-family: "맑은 고딕", 나눔고딕, 돋움, sans-serif;
+}
+
+.container {
+	width: 100%;
+	background: #e4f7ba;
+	padding: 20px;
+	text-align: center;
+}
+
+.body-main { display: flex; }
+.article { width: 75%; height: 500px; background: #eee; padding: 15px; }
+.side { width:  25%; height: 500px; background: #faf4c0; }
+.footer { width: 100%; background: #9575cd; padding: 20px; text-align: center; }
+
+/*
+	- mix-width
+		: 스마트폰등 가장 작은 사이즈에서 레이아웃을 기본으로 하고
+			점차 확대되어 가는 형태로 css 작성
+*/
+
+/* 화면 너비 320 이상 */
+@media (min-width: 320px) {
+	.container { width: 100%; border: 3px solid gray;}
+	.header { height: 300px; }
+	.body-main { flex-direction: column; }
+	.article{ width: 100%; height: 300%; }
+	.side{ width: 100%; height: 300px; }
+}
+
+/* 화면 너비 480 이상 */
+@media (min-width: 480px) {
+	.container { width: 100%; border: 3px solid blue;}
+	.header { height: 100%; }
+	.body-main { flex-direction: row; }
+	.article{ width: 75%; height: 500px; }
+	.side{ width: 25%; height: 500px; }
+}
+
+/* 화면 너비 768 이상 */
+@media (min-width: 768px) {
+	.container { width: 100%; border: 3px solid green;}
+}
+
+/* 화면 너비 1024 이상 */
+@media (min-width: 1024px) {
+	.container { width: 95%; border: 3px solid red;}
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+	<div class="header">
+		<h1>헤더입니다.</h1>
+	</div>
+	<div class="body-main">
+		<div class="article">
+			메인입니다.
+		</div>
+		<div class="side">
+			사이드입니다.
+		</div>
+	</div>
+	<div class="footer">
+		<h3>푸터입니다.</h3>
+	</div>
+</div>
+
+</body>
+</html>

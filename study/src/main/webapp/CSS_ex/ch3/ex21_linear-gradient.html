@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Linear Gradient Example</title>
+<style type="text/css">
+div {
+	width: 100%;
+	height: 100px;
+	margin-bottom: 20px; 
+}
+
+/* 그라디언트 방향 별로 테스트 */
+.box1 { background: linear-gradient(to bottom, yellow, red); }
+.box2 { background: linear-gradient(to top, yellow, red); }     /* 수정됨 */
+.box3 { background: linear-gradient(to right, yellow, red); }
+.box4 { background: linear-gradient(to left, yellow, red); }
+.box5 { background: linear-gradient(45deg, yellow, red); }      /* 수정됨 */
+.box6 { background: linear-gradient(13deg, 
+	#b3cae5 12%, #dbdde4 46%, #e4e3e4 70%, #f7ddbb 94%, #efcab2 100%); }
+
+</style>
+</head>
+<body>
+
+<h3>linear-gradient</h3>
+
+<div class="box1">to bottom</div>
+<div class="box2">to top</div>
+<div class="box3">to right</div>
+<div class="box4">to left</div>
+<div class="box5">45deg</div>
+<div class="box6">13deg (multi-color)</div>
+
+</body>
+</html>

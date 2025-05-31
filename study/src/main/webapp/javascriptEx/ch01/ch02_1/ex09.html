@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>리터널(literal)</h3>
+	
+	<script type="text/javascript">
+	var a;
+	
+	a = 13; // 10진수
+	console.log("10진수 :", a);
+	
+	a = 0o13; // 8진수
+	console.log("8진수 :", a);
+	
+	a = 0x13; // 16진수
+	console.log("16진수 :", a);
+
+	a = 0b1001; // 2진수
+	console.log("2진수 :", a);
+
+	a = 3.141562; 
+	console.log("부동소수점 :", a);
+
+	a = 3.1E+12; 
+	console.log("부동소수점 :", a);
+
+	a = 'seoul';
+	// a = "seoul";
+	console.log("문자열 :", a);
+	
+	a = 'C:\\temp'; 
+	console.log("문자이스케이프 :", a);
+	
+	a = "subject : \"java\", price : 1000"; 
+	console.log(a);
+
+	a = 'subject : "java", price : 1000'; 
+	console.log(a);
+	
+	a = /ab+c/;
+	console.log("정규식 리터널 : ", a);
+	
+	a = ['html', 'css', 'javascript']; // 배열 리터널
+	console.log(a);
+	
+	// 속성명에는 ''를 생략해도 되지만 값에는 생략하면안된다.
+	a = {name: '이자바', age:'20'} // 객체 리터널
+	console.log(a);
+	
+	var first = '김';
+	var last = '자바';
+	var msg;
+	// 템플릿 리터널 : 벡틱(`)으로 표현
+	// 벡틱(`)은 js 파일에서만 쓴다. 
+	// 템플릿 리터널(${}) 표현식으로 처리된 결과값을 문자열로 반환
+	msg = `안녕하세요 ${first} ${last}님`;
+	// msg = '안녕하세요 ' + first + ' ' + last + '님';
+	console.log(msg);
+	
+	
+	
+	</script>
+
+</body>
+</html>

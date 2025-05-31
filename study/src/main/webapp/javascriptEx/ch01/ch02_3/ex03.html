@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<p>
+		<input type="text" id="num" placeholder="숫자">
+		<button type="button" onclick="result()">확인</button>
+	</p>
+
+	<script type="text/javascript">
+	function result() {
+		// let n = num.value;
+			// id는 가능
+			// id 명과 함수명이 동일하면 에러 발생
+		// let n = document.getElementById('num').value;
+				// id로 접근
+		let n = document.querySelector('#num').value;
+		
+		n = parseInt(n);
+		if(n % 2 === 0 && n % 3 === 0) {
+			alert(n + ' : 2 또는 3의 배수');
+		} else if(n % 2 === 0) {
+			alert(n + ' : 2의 배수');
+		} else if(n % 3 === 0) {
+			alert(n + ' : 3의 배수');			
+		} else {
+			alert(n + ' : 2 또는 3의 배수가 아님');						
+		}
+		
+		
+		
+	}
+	</script>
+
+</body>
+</html>

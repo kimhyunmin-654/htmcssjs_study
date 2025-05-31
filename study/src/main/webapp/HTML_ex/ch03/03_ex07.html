@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h3>span 태그</h3>
+	
+	<!-- 인라인태그는 태그 앞 뒤에 공백, 엔터, 탭등이 있으면 4px 정도의 공백이 생김  -->
+	<span style="background: gray;">HTML</span>
+	<span style="background: gold;">HTML</span>
+	<span style="background: fuchsia;">HTML</span>
+	<br><br><br>
+
+	<span style="background: gray;">HTML</span><span style="background: gold;">HTML</span><span style="background: fuchsia;">HTML</span>
+	<br><br><br>
+	
+	<!--  disokay: block; -> 인라인태그를 블록태그요소로 변경 -->
+	<span style="background: gray; width: 100px; display: block;">HTML</span>
+	<span style="background: gold; width: 100px; display: block;">HTML</span>
+	<span style="background: fuchsia; width: 100px; display: block;">HTML</span>
+	<br><br><br>
+	
+	<!--  display: inline-block : 인라인태그이면서 블록태그요소의 width, padding 등의 속성을 사옹가능하도록 지정
+		즉, 요소는 인라인으로 배치하고, 내용은 블록 레벨로 지정
+	-->	
+		
+	<span style="background: gray; width: 100px; display: inline-block;">HTML</span>
+	<span style="background: gold; width: 100px; display: inline-block;">HTML</span>
+	<span style="background: fuchsia; width: 100px; display: inline-block;">HTML</span>
+	<br><br><br>
+	
+	<div style="background: gold; width: 100px; display: inline;">HTML</div>
+	<span style="background: fuchsia; width: 100px; display: inline;">HTML</span>
+	<br><br><br>
+
+	
+</body>
+</html>

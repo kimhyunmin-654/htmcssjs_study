@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "맑은 고딕", 돋움, sans-serif;
+	font-size: 15px;
+	color: #222;
+}
+
+.btn {
+	color: #333;
+	border: 1px solid #999;
+	background: #fff;
+	padding: 5px 10px;
+	cursor: pointer;
+	font-size: 15px;
+	font-weight: 500;
+	border-radius: 4px; 
+}
+
+.btn:hover {
+	background: #f8f9fa;
+	color: #333;
+}
+
+.form-control {
+	border: 1px solid #999;
+	border-radius: 4px;
+	background: #fff;
+	padding: 4px 5px; 
+}
+
+input:focus, textarea:focus { outline: none; }
+
+.container {
+	width: 700px;
+	margin: 30px auto;
+
+}
+
+.container .title {
+	font-size: 17px;
+	font-weight: 600;
+	padding: 13px 0;
+}
+
+.table {
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+
+.table th, .table td {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.table-list thead > tr {
+	background: #f8f9fa;
+}
+
+.table-list thead > tr {
+	border-top: 2px solid #212526;
+	border-bottom: 1px solid #ced4da;
+}
+
+.table-list tbody > tr,
+.table-list tfoot > tr {
+ border-bottom: 1px solid #ced4da;
+}
+
+.container div > h5 {
+	color: #353535;
+	margin-bottom: 10px;
+}
+
+.table-list thead > tr {
+	color : #A6A6A6;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+	<div>
+	<h2>게시판</h2>
+	<br>
+	<h5>25개(1/2페이지)</h5>
+	</div>
+	
+	<table class="table table-list">
+		<thead>
+			<tr>
+				<th width="80">번호</th>
+				<th width="500">제목</th>
+				<th width="100">작성자</th>
+				<th width="120">작성일</th>
+				<th width="80">조회수</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr align="center">
+				<td>3</td>
+				<td align="left" >안녕 하세요.</td>
+				<td>다자바</td>
+				<td>2022-03-12</td>
+				<td>1</td>
+			</tr>
+			<tr align="center">
+				<td>2</td>
+				<td align="left">자바 강좌입니다.</td>
+				<td>홍길동</td>
+				<td>2022-03-10</td>
+				<td>1</td>
+			</tr>
+						
+		</tbody>
+		<tfoot>
+			<tr align="center">
+				<td>1</td>
+				<td align="left">HTML 강좌입니다.</td>
+				<td>스프링</td>
+				<td>2022-03-10</td>
+				<td>1</td>
+			</tr>			
+		</tfoot>
+		
+	</table>
+	
+			<table class="table">
+			<tr>
+				<td width="100">
+					<button type="button" class="btn">새로고침</button>
+				</td>
+				<td align="center">
+					<form>
+						<select name="condition" class="form-select">
+							<option value="title">제목+내용</option>
+							<option value="name">이름</option>
+							<option value="birth">생년월일</option>
+						</select>
+						<input type="text" name="keyword" class="form-control">
+						<button type="button" class="btn">검색</button>
+					</form>
+				</td>
+				<td align="right" width="100">
+					<button type="button" class="btn">글올리기</button>
+				</td>
+			</tr>
+		
+		</table>
+	
+	
+
+</div>
+
+
+</body>
+</html>

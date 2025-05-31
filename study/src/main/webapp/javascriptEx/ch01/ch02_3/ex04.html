@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<p>
+		<input type="text" id="num" placeholder="숫자">
+		<button type="button" onclick="result()">확인</button>
+	</p>
+
+	<script type="text/javascript">
+	function result() {
+		let n = document.querySelector('#num').value;
+		if(!n || isNaN(n)) {
+			alert('숫자만 가능합니다.');
+			documnet.querySelector("#num").focus();
+			return;
+		}
+		
+		n = parseInt(n);
+		
+		// switch ~ case 에서의 비교는 === 와 같이 동치 비교를 한다.
+		// Math.flooe(x) : x를 넘지 않는 최대 점수
+		let s;
+		switch(Math.floor(n/10)) {
+		case 10:
+		case 9: s = 'A'; break;
+		case 8: s = 'B'; break;
+		case 7: s = 'C'; break;
+		case 6: s = 'D'; break;
+		default: s = 'F'; break;
+		}
+		alert(n + ':' + s);
+				
+	}
+	</script>
+
+</body>
+</html>

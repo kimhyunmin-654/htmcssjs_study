@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+* { box-sizing: border-box; }
+
+.container {
+  width: 600px;
+  height: 500px;
+  margin: 50px auto;
+  border: 5px dotted gray;
+  
+   align-content: center; /* 자식 아이템 수직 가운데 */
+}
+
+.item {
+   width: 250px;
+   height: 70px;
+   
+   font-weight: 900;
+   font-size: 25px;
+   border: 3px solid green;
+   border-radius: 3px;
+
+   text-align: center;   
+   align-content: center; /* 텍스트 수직 가운데 */
+   
+   margin: 0 auto;  /* .item 수평가운데  */
+}
+
+</style>
+
+</head>
+<body>
+
+<h3></h3>
+
+<!-- 
+  - align-content
+   1) flex 의 교차축(cross axis), grid 또는 block level 요소의 
+      블록 축을 align-content 따라 콘텐츠 항목 사이와 주변의 공간 분포를 설정(수직 정렬)
+   2) 속성 값
+      normal : align-content 항목은 값이 설정되지 않은 것처럼 항목이 기본 위치에 포장된다.
+      start : 시작점(위쪽) 정렬
+      center : 수직 가운데 정렬
+      end : 끝점(아래쪽) 정렬
+      flex-start : items를 시작점(flex-start)으로 정렬	
+      flex-end : items를 끝점(flex-end)으로 정렬	
+      space-around : 각 행 위아래에 여백을 고르게 정렬
+      space-between : 첫 행은 시작점에, 끝 행은 끝점에 정렬되고 나머지 여백으로 고르게 정렬
+      space-evenly : 모든 여백을 고르게 정렬
+      stretch : 스트레치는 container의 교차(열) 축을 채우기 위해 items를 늘림
+ -->
+
+<h3> align-content 를 이용한 수직 정렬 </h3>
+
+<div class="container">
+	<div class="item">
+		가운데 정렬
+	</div>
+</div>
+
+
+</body>
+</html>

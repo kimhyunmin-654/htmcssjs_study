@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<p>
+		<input type="text" id="dan" placeholder="원하는 단">
+		<button type="button" onclick="result()">확인</button>
+	</p>
+	<div id="resultlayout"></div>
+	
+	
+	<script type="text/javascript">
+	function result() {
+		let dan = document.querySelector("#dan").value;
+		let out;
+		
+		// /정규식 리터럴/
+		if(! /^[1-9]{1}$/.test(dan)) {
+			document.querySelector("#dan").focus();
+			return;
+		}
+		
+		dan = parseInt(dan);
+		
+		out = '<p style="font-weight:700px; color: blue;">** ' + dan + '단 **</p>';
+		for(let n = 1; n <= 9;n++ ) {
+			out += `${dan} * ${n} = ${dan * n}<br>`;
+		}
+		document.querySelector("#resultlayout").innerHTML = out;
+	}
+	
+	</script>
+	
+
+</body>
+</html>

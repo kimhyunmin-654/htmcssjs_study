@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+/* :root -> 문서 트리의 루트트 나타냄 */
+/* :root 에서 선언하면 html 문서 어디에서나 사용 가능*/
+
+:root {
+	--p-color:blue; /* 사용자 지정 속성(변수) 선언, 변수는 --로 시작 */
+	--p-size: 1.5rems;	
+}
+p {
+	color: var(--p-color); /* var() 함수를 이용한 사용자 지정 속성 접근 */
+	font-size: var(--p-size);
+}
+
+
+
+</style>
+</head>
+<body>
+
+	<h3>사용자 지정 css 속성</h3>
+	
+	<p>사용자 지정 css 속성 예제 입니다.</p>
+
+</body>
+</html>

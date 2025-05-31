@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>table 태그</h3>
+	<pre>
+		- caption : 표의 제목 정의
+		- thead : 표의 머리글 부분
+		- tbody : 표의 본문 부분,
+		- tfoot : 표의 꼬리말 부분
+		- thead, tbody, tfoot 가 요소에 포함되지 않는 경우 tr 태그는 기본적으로
+		  tbody 태그에 포함된다.
+	</pre>
+	
+	<div style="width: 550px; margin: 30px auto;">
+		<table border="1" style="width: 100%; border-collapse: collapse;">
+			<caption>성적처리</caption>
+			<thead>
+				<tr>
+					<th width="100">이름</th>
+					<th>생년월일</th>
+					<th width="100">국어</th>
+					<th width="100">영어</th>
+					<th width="100">수학</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr height="35" align="center">
+					<td align="left" style="padding-left: 5px;">김자바</td>
+					<td>2005-10-10</td>
+					<td>80</td>
+					<td>90</td>
+					<td>85</td>
+				</tr>
+				<tr height="35" align="center">
+					<td align="left" style="padding-left: 5px;">나자바</td>
+					<td>2002-09-09</td>
+					<td>90</td>
+					<td>90</td>
+					<td>90</td>
+				</tr>				
+			</tbody>
+			<tfoot>
+				<tr height="25" align="center">
+					<td colspan="2" align="left" style="padding-left: 5px;">평균</td>
+					<td>85</td>
+					<td>90</td>
+					<td>87.5</td>
+				</tr>
+			</tfoot>
+						
+		</table>
+		
+	</div>
+
+</body>
+</html>

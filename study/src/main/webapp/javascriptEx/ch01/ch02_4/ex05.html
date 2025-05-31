@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>클로저(closures)</h3>
+	
+	<script type="text/javascript">
+	function fun(x) { // 외부함수
+		let n = 10;
+	
+		// 내부함수(클로저)
+		function sub(y) {
+			return n + x + y; // 외부함수의 변수나 매개변수 접근 가능
+		}
+		
+		return sub(3); // 외부함수에서 내부함수 호출
+	}
+	console.log(fun(5));
+	
+	function fun2(x) {
+		function sub2(y) {
+			return x + y;
+		}
+		
+		return sub2;
+	}
+	
+	var fn = fun2(2);
+	var n = fn(3);
+	console.log(n);
+	
+	n = fun2(10)(3);
+	console.log(n);
+	
+	</script>
+
+</body>
+</html>

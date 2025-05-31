@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>데이터 타입</h3>
+
+	<script type="text/javascript">
+		var a, b;
+
+		b = '자바'; // string - 문자열
+		a = typeof(b); // 타입 반환
+		console.log(a);
+
+		b = 50; // number - 숫자
+		a = typeof(b);
+		console.log(a);
+
+		b = true; // boolean - 논리형
+		a = typeof(b);
+		console.log(a);
+
+		b = function() { }; // function - 함수
+		a = typeof(b);
+		console.log(a);
+
+		b = {}; // object - 객체
+		a = typeof(b);
+		console.log(a);
+
+		b = null; // object - 객체, null 은 빈객체를 참조하는 특별한 값
+		a = typeof(b); // null은 object 타입
+		console.log(a);
+
+		var x;
+		a = typeof(x)
+		console.log(a); // undefined 
+		console.log(x); // undefined
+			// 초기화 하지 않은 변수의 값은 undefined
+			// undefined 는 값이자 타입니다.
+			
+		a = typeof(y);
+		console.log(a); // undefined
+			// 정의하지 않은 변수는 undefined 타입니다.
+		
+	</script>
+
+</body>
+</html>

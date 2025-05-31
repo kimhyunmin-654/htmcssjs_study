@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h3>file 관련 태그</h3>
+	<form action="" enctype="multioart.form-data" method="post"></form>
+		<p>
+			<!--  accept : 파일의 타입에 대한 파일 종류를 나타냄 -->
+			<!-- accept="image/png, image/jpg, image/jpeg, image/gif" 
+				처럼 특정 이미지만 선택가능하도록 설정 가능 -->
+			<label>파일 :
+				<input type="file" name="selectFile2"
+					accept="image/*">
+			</label>
+		</p>
+		
+		<p>
+			<label>여러파일 :
+				<input type="file" name="selectFile3" multiple="multiple"
+					accept="image/*">
+			</label>
+		</p>
+	
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3> 함수 - 함수작성 및 호출 </h3>
+	
+	<script type="text/javascript">
+	var n;
+	
+	// 함수 선언문 방식으로 함수 만들기 --
+	function sub1(x, y) {
+		let s = x + y;
+		return s;
+	}
+	
+	// 함수 호출
+	n = sub1(10, 5);
+	console.log(n);
+	
+	// 함수 표현식 방식으로 함수 만들기 -- 
+	var sub2 = function(x, y) { // 익명 함수
+		return x + y;
+	};
+	var plus = sub2;
+	n = sub2(10, 20);
+	console.log(n);
+	
+	n = plus(15, 20);
+	console.log(n);
+	
+	// 기명 함수 표현식 방식으로 함수 만들기 --
+	var sub3 = function add(x, y) {
+		return x + y;
+	};
+	
+	n = sub3(5,2);
+	console.log(n);
+	
+	// n = add(5,3); // 에러
+		// 기명식 함수 표현식에의 함수 이름은 외부 접근 부가
+	
+	var sub4 = function sum(n) {
+		return n > 1 ? n + sum(n-1) : n;
+	};
+	n = sub4(10);
+	console.log(n);
+	
+	// Function() 생성자를 이용한 함수 만들기 --
+	var sub5 = new Function('x', 'y', 'return x + y;');
+	n = sub5(5, 6);
+	console.log(n);
+	
+	// 즉시 실행 함수 - 정의함과 동시에 함수를 바로 실행
+	var s = (function(a, b) {
+		return a + b;
+	}) (3, 12);
+	console.log(s);
+	
+	(function(a,b) {
+		console.log(a + b);
+	}) (3,4);
+	
+	
+	</script>
+
+</body>
+</html>

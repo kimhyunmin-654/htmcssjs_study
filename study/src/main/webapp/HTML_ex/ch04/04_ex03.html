@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+* {padding: 0; margin: 0; box-sizing: border-box;}
+
+.container{ width: 600px; margin: 20px auto; }
+
+.table {width: 100%; border-collapse: collapse; }
+
+.table td, .table th {padding-top:  7px; padding-bottom:  7px; }
+
+.container h3 {
+	margin-bottom:  10px;
+}
+
+/* tr 태그에 border를 설정하기 위해서는 table에 border-collapse: collapse; 가 설정되어 있어야 한다. */
+.score-table thead > tr { 
+	background: #f8f9fa;
+	border-top: 2px solid #ced4da; 
+	border-bottom: 1px solid #ced4da;
+}
+
+.score-table thead th {
+	width: 100px;
+}
+.score-table tbody > tr {
+	border-bottom: 1px solid #ced4da;
+}
+
+.score-table tbody td {
+	text-align: center;
+}
+
+.score-table .right {
+	text-align: right;
+	padding-right: 7px;
+}
+
+</style>
+
+</head>
+<body>
+	<div class="container">
+		<h3>성적처리</h3>
+		<table class="table score-table">
+			<thead>
+				<tr>
+					<th>이름</th>
+					<th>국어</th>
+					<th>영어</th>
+					<th>수학</th>
+					<th>총점</th>
+					<th>평균</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>홍길동</td>
+					<td>80</td>
+					<td>70</td>
+					<td>80</td>
+					<td class="right">230</td>
+					<td class="right">76.7</td>
+				</tr>
+				<tr>
+					<td>이순신</td>
+					<td>90</td>
+					<td>90</td>
+					<td>90</td>
+					<td class="right">270</td>
+					<td class="right">90.0</td>
+				</tr>				
+			</tbody>
+					
+		</table>
+	
+	</div>
+
+</body>
+</html>

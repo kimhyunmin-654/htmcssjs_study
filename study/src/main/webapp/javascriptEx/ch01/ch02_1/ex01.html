@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<h3>변수(variable) 선언</h3>
+	
+	<!-- 스트립트는 밑으로 빼는게 나음 
+		 어쩔 수 없이 위로 빼야하는 경우도 있음 --> 
+	<script type="text/javascript">
+	var a = 10, b = 20, c; // 변수 선언 및 초기화
+	
+	console.log(c); // undefined - 초기값이 부여되지 않은 경우
+	
+	// c = a + x; // 에러 : Reference 예외 발생
+	c = a + b;
+	console.log(c);	
+	</script>
+	
+</body>
+</html>

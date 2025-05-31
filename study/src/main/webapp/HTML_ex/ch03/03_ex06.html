@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>span 태그 : 인라인 태그</h3>
+	
+	<div style="background: green;">예제1</div>
+	
+	<!--  인라인테그는 전후 줄바꿈이 일어나지 않는다. -->
+	<span style="background: yellow;">HTML</span>
+	<!-- 인라인태그는 width height 속성을 무시한다. -->
+	<span style="background:  gray; width: 300px; height: 100px;">CSS</span>
+	<!--  margin은 좌우만 적용되고, padding은 적용된다. -->
+	<span style="margin: 100px;">javascript</span>
+	<span>JAVA</span>
+	<span>ORACLE</span>
+
+	<div style="background: green;">예제 2</div>
+	<hr>
+	
+	<!--  인라인 태그에서 패딩은 적용되지만 위/아래 패딩은 다른 영역을 침범한다. -->
+	<div style="background: tomato; height: 30px;">예제 3</div>
+	<span style="background: gray; padding: 15px;">스프링</span>
+	<div style="background:  blue; height: 30px;">예제 4</div>
+	
+</body>
+</html>

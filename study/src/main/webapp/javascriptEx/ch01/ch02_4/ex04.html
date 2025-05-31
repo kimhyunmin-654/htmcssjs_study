@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>함수 - 매개변수</h3>
+
+	<script type="text/javascript">
+	function add1(a, b) {
+		return a + b;
+	}
+	console.log(add1(10)); // 10 + undefined -> NaN
+	
+	function add2(a, b) {
+		// b = b ? b : 0;
+		b = b || 0; 
+		return a + b;
+	}
+	console.log(add2(10)); // 10 + 0 = 10
+	console.log(add2(10,5)); // 10 + 5 = 10
+	
+	// 디폴트 매개변수
+	function add3(a, b = 0) {
+		return a + b;
+	}
+	console.log(add3(11)); 
+	console.log(add3(11,5)); 
+	
+	function add4(a = 1, b) {
+		console.log(a, b);
+	}
+	add4(); 
+	add4(5); 
+	
+	// Rest 매개변수(부정인수)
+	function add5(...args) {
+		let s = 0;
+		for(let n = 0; n < args.length; n++) {
+			s += args[n];
+		}
+		return s;
+	}
+	
+	console.log(add5(1,2,3,4,5));
+	
+	</script>
+
+</body>
+</html>

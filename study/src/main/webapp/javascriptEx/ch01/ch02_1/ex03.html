@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+<h3>변수 - 호이스팅(hoisting)</h3>
+<p>
+	호이스팅 : 변수의 정의가 그 범위에 따라 선언과 할당으로 분리되는 것을 의미
+</p>
+
+<script type="text/javascript">
+
+function sub() {
+	// console.log(a); // ReferenceError
+	
+	console.log(x); // undefined. 나중에 선언한 변수 참조 가능
+	var x = 3;
+	console.log(x); // x
+	
+}
+
+sub();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>문자열를 숫자로 변환: parseInt, parseFloat</h3>
+	
+	<script type="text/javascript">
+	var a, b;
+	
+	a = '123';
+	console.log(a === 123); // false;
+	console.log(a + 10); // 12310
+	
+	b = parseInt(a); // 문자열을 숫자로 변환
+	console.log(b === 123); // true;
+	console.log(b + 10); // 133
+	
+	a = '1,234';
+	b = parseInt(a); // 1
+	console.log(a, b); 
+	
+	a = '1,234';
+	b = Number(a); // NaN
+	console.log(b); 
+	
+	a = '123a';
+	b = parseInt(a); // 123
+	console.log(a, b); 
+	
+	a = 'a123';
+	b = parseInt(a); // NaN
+	console.log(a, b); 	
+
+	a = '123.45';
+	b = parseInt(a); // 123
+	console.log(a, b); 		
+
+	a = '';
+	b = parseInt(a); // NaN
+	console.log(b); 	
+	
+	a = '    123';
+	b = parseInt(a); // 123
+	console.log(b); 
+
+	a = '1 2 3';
+	b = parseInt(a); // 1
+	console.log(b); 
+	
+	a = '0x3F';
+	b = parseInt(a); // 63 (16진수를 10진수로 변환)
+	console.log(b); 	
+
+	a = '0x3F';
+	b = parseInt(a, 10); // 0
+	console.log(b); 
+	
+	a = '123.567';
+	b = parseFloat(a); //123.567 
+	console.log(b);
+	
+	</script>
+
+</body>
+</html>

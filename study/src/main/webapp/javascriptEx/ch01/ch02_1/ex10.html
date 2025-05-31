@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>연산자</h3>
+
+	<script type="text/javascript">
+	var a, b, c;
+	
+	// +, -, *, /, %, ++, --
+	
+	c = 1 / 2;
+	console.log(c);
+	
+	c = 10 / 0;
+	console.log(c); // Infinity : 무한에 가까운 수
+	
+	a = 2;
+	b = 10;
+	c = a ** b; // 거듭제곱
+	console.log(c); 
+	
+	c = 2 ** 3 ** 2  
+	// 2 = 2 ** (3 ** 2); 와 동이르 좌 <- 우 순으로 연산
+	console.log(c); // 512
+	
+	// c = -2 ** 2; // 모호한 표현으로 허용 안함
+	
+	// 문자열 결합 연산자 : +
+	a = 'seoul';
+	b = 'korea';
+	c = a + b;
+	console.log(c);
+	
+	// 숫자 + 문자 -> 문자 + 문자
+	a = '10';
+	b = 20
+	c = a + b;
+	console.log(c); // 1020
+	
+	a = '1.1';
+	b = '1.1';
+	c = a + b;
+	console.log(c); // 1.11.1
+	
+	c = (+a) + (+b); // 단항 연사자 +에 의하여 문자가 숫자로 변환된다. 
+	console.log(c); // 2.2
+		 
+	c = a - b;
+	console.log(c); // 0
+	
+	</script>
+
+</body>
+</html>

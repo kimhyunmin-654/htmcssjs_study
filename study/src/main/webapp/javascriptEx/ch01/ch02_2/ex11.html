@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>전역 속성</h3>
+
+	<script type="text/javascript">
+	// wrapper object : 숫자, 문자열등 원시 타입의 프로퍼티에 접근하기 위해 생성되는 임시 객체
+	
+	// 원시타입(string, number, boolean 등)
+	var s = '자바스크립트'; // 문자열 생성
+	var len = s.length; // String 프로퍼티의 length 속성 사용
+	console.log('문자열 길이 : ' + len);
+	
+	// 객체 타입 String(String, Number, Boolean 등) 
+	var s2 = new String('자바스크립트');
+	len = s2.length;
+	console.log('문자열 길이 : ' + len);s
+	
+	console.log(s == s2); // true. 리터널 값과 String 객체를 동일하게 본다.
+	console.log(s === s2); // false. 
+	
+	console.log(typeof s); // string 타입
+	console.log(typeof s2); // object 타입
+	
+	// 전역 값 속성
+	console.log(NaN === NaN); // false
+	console.log(isNaN(NaN));  // true
+	
+	</script>
+	
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.box {
+	background: red;
+}
+.box > span {
+	float: left;
+	color: #fff;
+	text-align: center;
+	padding: 15px 15px;
+}
+
+.box:after {
+	content: ''; display: block; clear: both;
+}
+
+
+</style>
+
+</head>
+<body>
+
+<h3>블록 태그와 인라인 태그</h3>
+
+<!-- div에 height 속성으로 배경 설정 -->
+<div style="background-color: gray; height: 50px; line-height: 50px;">
+	<span style="padding: 15px;">A</span>
+	<span style="padding: 15px;">B</span>
+	<span style="padding: 15px;">C</span>
+</div>
+
+<br><hr><br>
+
+<!-- div의 높이가 늘어나지 않음 -->
+<div style="background-color: yellow;">
+	<span style="padding: 15px;">A</span>
+	<span style="padding: 15px;">B</span>
+	<span style="padding: 15px;">C</span>
+	  <!-- 개발자 도구로 보면 span 태그의 패딩은 적용되어 있음 -->
+</div>
+
+<br><hr><br>
+
+<!-- div의 높이가 늘어남 -->
+<!-- div에 height를 주지 않아도 inline 태그의 패딩 만큼 div에 모두 배경색 나오게하기 -->
+<div style="background: green;">
+	<span style="padding: 15px; float: left;">A</span>
+	<span style="padding: 15px; float: left;">B</span>
+	<span style="padding: 15px; float: left;">C</span>
+	<div style="clear: both;"></div> <!-- div 밖에 있으면 색이 보이지 않음 -->
+</div>
+
+<br><hr><br>
+
+<!-- div의 높이가 늘어남 -->
+<div class="box">
+	<span>A</span>
+	<span>B</span>
+	<span>C</span>
+</div>
+
+<br><hr><br>
+
+<!-- div는 보이지 않음. div에 D라는 문자열을 추가해서 확인 가능 -->
+<div style="background: blue;">
+	<span style="padding: 15px; float: left;">A</span>
+	<span style="padding: 15px; float: left;">B</span>
+	<span style="padding: 15px; float: left;">C</span>
+</div>
+<div style="clear: both;"></div> <!-- 배경색 안보임 -->
+
+<br><hr><br>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>간단한 계산기</h3>
+	
+	<p>
+		<input type="text" id="inputs" placeholder="수식을 입력하세요">
+		<button type="button" onclick="result();"> 확인 </button>
+	</p>
+	<hr>
+	
+	<div class="resultlayout"></div>
+	
+	<script type="text/javascript">
+	function result() {
+		let s = document.querySelector("#inputs").value;
+		if(! s) {
+			document.querySelector('#inputs').focus();
+			return;
+		}
+		
+		let n = eval(s);
+		let msg = `${s} = ${n}`;
+		
+		document.querySelector('.resultlayout').innerHTML = msg;
+		
+	}
+	
+	</script>
+
+</body>
+</html>

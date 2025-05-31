@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<style type="text/css">
+
+:root {
+    --item-width: 250px; /* 아이템 너비 */
+    --column-count : 4; /* 컬럼 개수 */
+}
+
+.container {
+	width: calc(var(--item-width) * var(--column-count));
+	margin: 0 auto;
+	column-count: var(--column-count);
+	column-gap: 20px;
+}
+
+.item {
+	break-inside: avoid; /* 아이템이 컬럼 사이에서 잘리지 않도록 방지 */
+	margin: 0 0 20px 0;
+	line-height: 0;
+	width: 100%;
+	background: #ccc;
+	border-radius: 20px;
+	overflow: hidden;
+	box-shadow: 0 8ox 20ox -15ox #000; /* 그림자 */
+}
+
+</style>
+</head>
+<body>
+
+<h3>CSS로 메이슨리 스타일 목록 만들기</h3>
+<p> 상자의 순서는 열 아래로 내려감 </p>
+
+<div class="container">
+    <div class="item"><img src="../img2/1.png"></div>
+    <div class="item"><img src="../img2/2.png"></div>
+    <div class="item"><img src="../img2/3.png"></div>
+    <div class="item"><img src="../img2/4.png"></div>
+    <div class="item"><img src="../img2/5.png"></div>
+    <div class="item"><img src="../img2/6.png"></div>
+    <div class="item"><img src="../img2/7.png"></div>
+    <div class="item"><img src="../img2/8.png"></div>
+    <!-- <div class="item"><img src="../img2/9.png"></div>  -->
+</div>
+
+</body>
+</html>

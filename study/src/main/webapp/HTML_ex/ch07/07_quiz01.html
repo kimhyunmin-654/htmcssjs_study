@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+function send() {
+	const f = document.myForm;
+	
+	let s;
+	
+	s = "아이디 : " + f.id.value;
+	s += "\n이름 : " + f.name.value;
+	
+	alert(s);
+}
+</script>
+
+<style type="text/css">
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.btn{
+	color: #333;
+	border: 1px solid #999;
+	background-color: #fff;
+	padding: 5px 10px;
+	border-radius: 4px;
+	font-weight: 500; 
+	cursor: pointer;
+	font-size: 14px;
+	font-family: "맑은 고딕", 나눔고딕, 돋움, sans-serif;
+}
+
+.btn:active, .btn:hover, .btn:focus {
+	background-color: #f8f9fa;
+	color: #333;
+}
+
+.table { width: 100%; border-spacing: 0; border-collapse: collapse;}
+.table th, .table td { padding-top: 10px; padding-bottom: 10px; }
+
+.board { margin: 30px auto; width: 600px;}
+
+.title { width: 100%; font-size: 20px;font-weight: bold; padding: 13px 0;}
+
+.table-form {
+	margin-top: 10px;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.table-form td {
+	padding: 7px 0;
+}
+
+.board .table-form tr:first-child td{
+	border-top: 2px solid #212529;
+}
+
+.table-form tr > td:first-child {
+	width: 110px;
+	text-align: center;
+	background:  #f8f9fa;
+}
+
+.table-form tr > td {
+	border-bottom: 1px solid #ced4da;
+}
+
+.table-form tr > td:nth-child(2) {
+	padding-left: 10px;
+}
+
+
+.table-form input {
+	height: 30px;
+}
+
+.table-form .select {
+	height: 28px;
+	
+}
+
+
+.table-form input[type=text],
+.table-form input[type=password],
+.table-form input[type=date] {
+	width: 50%;
+}
+
+.table-form .addr {
+	margin-top: 3px;
+}
+
+
+</style>
+
+</head>
+<body>
+
+<form name="myForm" action="javascript:send();" method="post">
+	<div class="board">
+		<div class="title">
+			<h3>회원 가입</h3>
+		</div>
+		
+		<table class="table-form">
+			<tr>
+				<td >아이디</td>
+				<td ><input type="text" name="id"  
+					pattern="[a-zA-Z0-9]+" maxlength="10" 
+					placeholder="아이디는 영문자 숫자만 가능" required></td>
+			</tr>
+			<tr>
+				<td>패스워드</td>
+				<td><input type="password" name="pw1" maxlength="10" 
+					placeholder="비밀번호" required></td>
+			</tr>
+			<tr>
+				<td>패스워드 확인</td>
+				<td><input type="password" name="pw2" maxlength="10" 
+					placeholder="비밀번호 확인" required></td>
+			</tr>
+			<tr>
+				<td>이 름</td>
+				<td><input type="text" name="name"></td>
+			</tr>
+			<tr>
+				<td>생년월일</td>
+				<td><input type="date" name="birth"></td>
+			</tr>
+			<tr>
+				<td>이메일</td>
+				<td>
+						<select class="select" name="email1">
+							<option value="">선 택 </option>
+							<option value="1">naver.com</option>
+							<option value="2">daum.net</option>
+							<option value="3">gmail.com</option>
+							<option value="4">nate.com</option>
+						</select>
+				<input type="email" name="emailname">
+				@ <input type="text" name="email2" 
+				value="" disabled="disabled" style="width: 35%;">
+				</td>
+			</tr>
+			<tr>
+				<td>전화번호</td>
+				<td>
+					<select class="select" name="tel">
+						<option value="">선 택 </option>
+						<option value="t1">02</option>
+						<option value="t2">010</option>
+						<option value="t3">011</option>
+						<option value="t4">016</option>
+					</select>
+					<input type="tel" name="tel1" min="1" max="149">
+					 - 
+					<input type="tel" name="tel2" min="1" max="149">
+				</td>
+			</tr>
+			<tr>
+				<td>우편번호</td>
+				<td><input type="text" name="addr" disabled="disabled">
+					<button class="btn" type="button" 
+							onclick="alert('우편번호를 검색하세요')">우편번호 검색</button></td>
+				
+			</tr>
+			<tr>
+				<td>주 소</td>
+				<td><input class="addr" type="text" name="address1"
+					 disabled="disabled" style="width: 95%;"><br>
+				    <input class="addr" type="text" name="address2" style="width: 95%;"></td>
+			</tr>
+			<tr>
+				<td>직업</td>
+				<td><input type="text" name="job"></td>
+			</tr>
+										
+		</table>
+		
+			
+		<table class="table">
+			<tr>
+				<td align="center">	
+					<button type="submit" name="sendButton" class="btn">회원가입</button>
+					<button type="reset" class="btn">다시입력</button>
+					<button type="button" class="btn">가입취소</button>
+				</td>
+			</tr>
+		</table>					
+	</div>
+</form>
+
+</body>
+</html>

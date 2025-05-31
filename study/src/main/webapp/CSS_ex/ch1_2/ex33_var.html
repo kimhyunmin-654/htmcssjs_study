@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+:root {
+	--size: 50;
+}
+
+.box {
+	/* 숫자 단위사이에 무의미한 공백이 발생하여 두개의 토큰으로 인식하여 작용되지 않는단 */
+	/*
+	width: var(--size)vw;
+	height: var(--size)vh;
+	*/
+	/* 이런 경우에는 calc() 함수를 사용 한다. */
+	width: calc(var(--size)* 1px);
+	height: calc(var(--size)* 1px);
+	background: green;
+}
+</style>
+
+</head>
+<body>
+
+	<h3>사용자 지정 css 속성</h3>
+
+	<div class="box"></div>
+	<hr>
+
+	<div class="bg"></div>
+
+</body>
+</html>

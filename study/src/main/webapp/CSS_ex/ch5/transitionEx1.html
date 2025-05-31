@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.box1 {
+	width: 100px;
+	height: 100px;
+	background: red;
+	margin: 30px;
+}
+
+.box1:hover {
+	border-radius: 50%;
+	background: blue;
+}
+ 
+.box2 {
+	width: 100px;
+	height: 100px;
+	background: red;
+	margin: 30px;
+	/* 트랜지션 효과: 모든 프로퍼티의 변화를 2초에 걸쳐 전환한다. */
+	transition: all 2s;
+}
+
+.box2:hover {
+	border-radius: 50%;
+	background: blue;
+}
+ 
+.box3 {
+	width: 100px;
+	height: 100px;
+	background: red;
+	margin: 30px;
+}
+
+.box3:hover {
+	border-radius: 50%;
+	background: blue;
+	/* hover on에서만 발동한다. */
+	transition: all 2s;
+}
+</style>
+</head>
+<body>
+
+<h3>트랜지션(transition)</h3>
+<p> 
+  - CSS 트랜지션은 CSS 속성을 변경할 때 애니메이션 속도를 조절하는 방법을 제공<br>
+  - CSS 프로퍼티의 값이 변화할 때, 프로퍼티 값의 변화가 일정 시간(duration)에 걸쳐 일어나도록 하는 것<br> 
+    속성 변경이 즉시 영향을 미치게 하는 대신, 그 속성의 변화가 일정 기간에 걸쳐 일어나도록 할 수 있다<br>
+</p>
+
+  
+<div class="box1"></div>
+<div class="box2"></div>
+<div class="box3"></div>
+
+</body>
+</html>

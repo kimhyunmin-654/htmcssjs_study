@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>함수 - 함수호이스팅</h3>
+	
+	<script type="text/javascript">
+	// 함수를 선언문 방식으로 작성한 경우에는 선언전에 호출할 수 있다.
+	n = sub1(10,5);
+	console.log(n);
+	function sub1(a,b) {
+		return a + b;
+	}
+	
+	// 함수를 표현식 방식으로 작성한 경우에는 선언전에 호출할 수 없다.
+	var sub2 = function(a,b) {
+		return a + b;
+	}; 
+	console.log(sub2(2,5)); 
+	
+	// 이벤트에 따른 함수 호출
+	window.onload = function() {
+		alert('안녕...');
+	};  
+	</script>
+
+</body>
+</html>

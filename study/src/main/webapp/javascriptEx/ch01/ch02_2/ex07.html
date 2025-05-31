@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<script type="text/javascript">
+	document.write('<h3>타이머 함수 예제</h3>');
+	
+	var n = 0;
+	function sub() {
+		document.write('<p>실행 횟수 - ' + (++n) + '</p>');
+	}
+	
+	setTimeout('alert("환영 합니다. !!!");', 3000); // 3초후에 한번 실행
+	setInterval('sub();', 2000); // 2초에 한번씩 sub() 함수 호출(무한반복)
+	
+	
+</script>
+
+</head>
+<body>
+
+	<h3></h3>
+
+</body>
+</html>

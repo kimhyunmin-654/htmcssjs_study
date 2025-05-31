@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+function send() {
+	const f = document.myForm;
+	
+	alert('submit 버튼을 눌렀습니다.');
+}
+
+</script>
+
+</head>
+<body>
+
+	<h3>form 관련 태그 및 주요 속성</h3>
+	
+	<form name="myForm" action="javascript:send()" method="post">
+		<p>
+			<!-- value 속성 : 초기값을 설정하거나 반환 받는다.  -->
+			value 속성 : <input type="text" name="input1" value="10">
+		</p>
+		
+		<p>
+			<!-- readonly 속성 : 값변경불가. 서버로 전성된다.  -->
+			readonly 속성 : <input type="text" name="input2"
+				 value="20" readonly="readonly">
+		</p>
+		
+		<p>
+			<!-- disabled 속성 : 값 변경 불가. 서버로 전송되지 않는다.  -->
+			disabled 속성 : <input type="text" name="input3" 
+				value="30" disabled="disabled">
+		</p>
+		
+		<p>
+			<!-- type="texst"와 유사하며, 화면이 출력되지 않는다. -->
+			<!-- 화면에 출력되지 않지만 서버로 전송해야 할 값이 있는 경우 사용 -->
+			<input type="hidden" name="num" value="37">
+		</p>
+		
+		<p>
+			<!-- submit 버튼을 -->
+			<!-- submit 버튼은 form 태그 안에 있으면 서버로 전송하는 기능이 있다. -->
+			<input type="submit" value="서버전송" >
+			<button>서버전송</button>
+			<button type="submit">서버전송</button>
+			<input type="image" src="btn_submit.gif">
+		</p>
+		
+		<p>
+			<!-- reset 버튼은 form 태그 안에 있어야 적용된다. -->
+			<button type="reset">초기화</button>
+			<!-- 일반버튼은 자바스크립트로 기능을 구현하지 않으면 아무런 기능을 하지 않는다. -->
+			<button type="button">일반버튼</button>
+		</p>
+				
+		
+	</form>
+
+</body>
+</html>

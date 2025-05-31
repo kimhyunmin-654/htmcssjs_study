@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>연산자 - 조건(삼항)</h3>
+	
+	<p>
+		<input type="text" id="inputs" placeholder="나이를 입력하세요">
+		<button type="button" onclick="result()">확인</button>
+	</p>
+	<hr>
+	<div id="resultlayout"></div>
+	
+	<script type="text/javascript">
+	function result() {
+		// let age = document.querySelector('#inputs').value;
+		let age = document.getElementById('inputs').value;
+		
+		if(! age) {
+			alert("나이를 입력 하세요..");
+			return;
+		}
+		
+		let s = age >= 19 ? '성인' : "미성년자"
+		let msg;
+		msg = `나이가 ${age} 이므로 <label style="color:red;">${s}</label> 입니다.`;
+		
+		document.querySelector('#resultlayout').innerHTML = msg;
+	}
+	</script>
+	
+
+</body>
+</html>
