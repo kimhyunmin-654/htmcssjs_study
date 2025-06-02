@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>event handler - 동적 객체 이벤트 등록 : addEventLitener()</h3>
+
+	<p>
+		<button type="button" onclick="add();"> 추가 </button>
+	</p>
+	<hr>
+	
+	<div id="resultlayout">
+		<p> <button type="button" class="btn-ok" data-num="1"> 버튼 </button></p>
+		<p> <button type="button" class="btn-ok" data-num="2"> 버튼 </button></p>	
+	</div>
+	
+	<script type="text/javascript">
+	var idx = 2;
+	const divEL = document.querySelector('#resultlayout')
+	function add() {
+		idx++;
+		let p = `<p> <button type="button" class="btn-ok" data-num="${idx}"> 버튼 </button></p>`;
+		divEL.insertAdjacentHTML('beforeend', p); // 마지막에 요소 추가
+		
+	}
+	
+	// 동일한 클래스명이 두개 있는 경우 첫번째 버튼만 이벤트가 등록된다.
+	/*
+	const el = document.querySelector('.btn-ok');
+	el.addEventListener('click', function() {
+		let num = el.getAttribute('data-num');
+		alert(num);
+	});
+	*/
+	
+	/*
+	// 동적으로 추가된 버튼은 이벤트가 등록되지 않는다.
+	const els = document.querySelectorAll('.btn-ok');
+	for(let el of els) {
+		el.addEventListener('click', function() {
+			let num = el.getAttribute('data-num');
+			alert(num);
+		});
+	}
+	*/
+	
+	// 동적으로 추가된 버튼에 이벤트를 등록히여 처리하는 방법은
+	// 버튼을 감싸고 있는 부모(div)에 이벤트를 등록하옆 처리해야 한다.
+	
+	// target : 이벤트를 발생시킨 객체
+	// matches() : 요소가 특정 css 선택자와 일치하면 true	
+	divEL.addEventListener('click', function(e) {
+		// 함수의 인자 e : 이벤트를 발생시킨 객체에 대한 정보를 가지고 있음
+		if(e.target.matches('.btn-ok')) {
+			let num = e.target.getAttribute('data-num');
+			alert(num);
+		}
+		
+		
+	});
+	
+	
+	
+	
+	</script>
+	
+	
+
+</body>
+</html>

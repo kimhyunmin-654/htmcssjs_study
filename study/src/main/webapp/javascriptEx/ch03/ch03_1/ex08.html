@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>JSON</h3>
+	<!-- 
+		"{\"name\":\"홍길동\", \"age\":20}"
+	 -->
+
+	<script type="text/javascript">
+	// 자바스크립트 객체
+	var obj = {name:'홍길동', kor:90, eng:80};
+	
+	// 자바스크립트 객체를 JSON 형식의 문자열로 변환
+	var s = JSON.stringify(obj);
+	console.log(s); // "{\"name\":\"홍길동\", \"kor\":90, \"eng\":80}"
+	console.log(typeof s); // string
+	
+	// JSON 형식의 문자열을 자바스크립트 객체로 변환
+	// var str = "{\"name\":\"김자바\", \"kor\":90, \"eng\":70}";
+	var str = '{"name":"김자바",  "kor":90, "eng":70}';
+	
+	var job = JSON.parse(str);
+	console.log(job.name, job.kor, job.eng);
+	
+	
+	</script>
+
+</body>
+</html>

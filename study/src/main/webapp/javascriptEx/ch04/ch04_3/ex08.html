@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>객체 - 프로퍼티 존재 여부</h3>
+	
+	<script type="text/javascript">
+	var objs = {name:'자바', age:19};
+	
+	console.log('name' in objs); // true
+	console.log('subject' in objs); // false
+	
+	// console.log(objs.name);
+	with(objs) {
+		console.log(name);
+		console.log(age);		
+	}
+	
+	</script>
+
+</body>
+</html>

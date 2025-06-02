@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>document 객체</h3>
+	<form name="myForm">
+		<p> 이름 : <input type="text" name="name"></p>	
+		<p> 생년월일 : <input type="text" name="birth"></p>	
+		<p> 나이 : <input type="text" name="age" id="age"></p>
+		<p>
+			<button type="button" onclick="send()"> 확인 </button>
+		</p>	
+	</form>
+	<hr>
+	
+	<div class="resultLayout"></div>
+
+	<script type="text/javascript">
+	function send() {
+		// 폼 접근
+		// const f = document.forms[0]; // 첫번째 폼
+		const f = document.myForm; // 폼이름(name 속성)으로 접근
+		// console.log(f);
+		
+		// form을 이용하여 form 안의 입력 객체 접근 : name 속성으로 접근
+		let name = f.name.value;
+		
+		// querySelector() - 선택자를 이용하여 접근
+		// let birth = document.querySelector('input[name=birth]').value;
+		
+		// getElementsByName() 메서드로 name 속성 접근
+		let birth = document.getElementsByName('birth')[0].value;
+		
+		// getElementById() 메서드로 id 속성 접근
+		let age = document.getElementById('age').value;
+		// let age = document.querySelector('#age').value;
+		
+		let s = `이름 : ${name}, 생년월일 : ${birth}, 나이 : ${age}`;
+		
+		document.querySelector('.resultLayout').innerHTML = s;
+	}
+	
+	</script>
+
+
+</body>
+</html>

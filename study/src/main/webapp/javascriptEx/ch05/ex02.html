@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+<style type="text/css">
+.layout {
+	background: #fff;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+</style>
+
+</head>
+<body>
+
+	<h3> 전체화면 </h3>
+	
+	<div class="layout">
+		<button type="button" onclick="fullScreen()">전체화면</button>
+		<button type="button" onclick="cancelScreen()">전체화면취소</button>
+		<button type="button" onclick="toggleScreen()">토글화면</button>
+	</div>
+	
+	<script type="text/javascript">
+	const el = document.querySelector('.layout');
+	
+	function fullScreen() {
+		el.requestFullscreen();
+	}
+	
+	function cancelScreen() {
+		document.exitFullscreen();
+	}
+	
+	function toggleScreen() {
+		if(! document.fullscreenElement) {
+			fullScreen();
+		} else {
+			cancelScreen();
+		}
+			
+	}
+	
+	</script>
+
+</body>
+</html>

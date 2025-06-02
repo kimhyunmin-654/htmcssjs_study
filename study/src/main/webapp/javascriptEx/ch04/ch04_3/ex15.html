@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>구조 분해(비 구조화) 할당</h3>
+	
+	<script type="text/javascript">
+		var obj = {name: '이자바', score:80};
+		
+		// 새로운 변수이름으로 구조 분해
+		var {name:a, score:b} = obj;
+		console.log(a, b); // 이자바 80
+		
+		// 기본값
+		var {x = 10, y = 5} = {x:7};
+		console.log(x, y) // 7 5
+		
+		var {a: aa = 10, b: bb = 5} = {a:3};
+		console.log(aa, bb) // 3 5
+		
+		
+		
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>구조 분해(비 구조화) 할당</h3>
+	<!-- 
+		배열이나 객체의 속성을 해제하여 그 값을 개별 변수에 담을 수 있는 자바스크립트 표현식
+	 -->
+	 <script type="text/javascript">
+	 // 배열 구조 분해
+	 
+	 // 기본 변수 할당
+	 var arr = ['java', 'spring', 'html'];
+	 // var a, b, c;
+	 // a = arr[0]; b = arr[1]; c = arr[2];
+	 var [a, b, c] = arr;
+	 console.log(a, b, c);
+	 
+	 // 선언된 변수에 분리하여 할당
+	 var x, y;
+	 [x, y] = [10, 20];
+	 console.log(x, y);
+	 
+	 // 기본값 
+	 var a2, b2, c2;
+	 [a2 = 5, b2 = 7, c2 = 9] = [1,2];
+	 console.log(a2, b2, c2); // 1 2 9
+	 
+	 </script>
+	 
+
+
+</body>
+</html>

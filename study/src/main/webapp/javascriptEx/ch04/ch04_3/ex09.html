@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>객체 : 객체에 프로퍼티나 메서드 추가</h3>
+
+	<script type="text/javascript">
+	function User(name, age) {
+		this.name = name;
+		this.age = age;
+	}
+	
+	// 객체에 프로퍼티나 메서드를 추가하면 해당 객체에만 추가 된다.
+	var obj = new User('자바', '20');
+	obj.score = 80;
+	objs.state = function() {
+		return this.age >= 19 ? '성인' : '미성년자';
+	};
+	// 주의 : 화살표함수에서의 this는 전역객체 이므로 객체의 메서드를 화살표 함수로 만들면 안된다.
+	
+	console.log(obj.name, obj.age, obj.score);
+	console.log(objs.state());
+	
+	var obj2 = new User('스프링', '21');
+	console.log(obj2.score); // undefined
+	// console.log(obj2e.state()); // 에러
+	
+	</script>
+
+</body>
+</html>

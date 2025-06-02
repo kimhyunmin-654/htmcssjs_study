@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>구조 분해(비 구조화) 할당</h3>
+	
+	<script type="text/javascript">
+	// 객체 구조 분해
+	var obj = {name:'이자바', score:85};
+	var {name, score} = obj; // {name, score} 에서 name, score는 obj의 프로퍼티 이름과 같아야한다. 
+	console.log(name, score);
+	
+	
+	// 선언 없는 할당
+	var a, b;
+	( {a, b} = {a:10, b:20} );
+	console.log(a, b);
+	
+	// - {a, b} = {a:10, b:20} 는 유효한 독립구분이 아님
+	//   {a, b}를 객체 리터널이 아닌 블록으로 처리한다.
+	// - ( {a, b} = {a:10, b:20} ); 는
+	// 	 var {a, b} = {a:10, b:20}; 와 동일한 구문
+	
+	</script>
+
+</body>
+</html>

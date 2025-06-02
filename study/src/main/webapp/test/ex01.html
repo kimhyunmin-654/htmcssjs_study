@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>예약 시스템</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .reservation {
+      margin-top: 20px;
+    }
+    .reservation-item {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+  </style>
+
+
+</head>
+<body>
+  <h2>예약 등록</h2>
+  <label>이름: <input type="text" id="nameInput"></label><br><br>
+  <label>예약 날짜: <input type="date" id="dateInput"></label><br><br>
+  <button onclick="reservationSystem.addReservation()">예약하기</button>
+
+  <div class="reservation" id="reservationList">
+    <h3>예약 목록</h3>
+    <!-- 예약 항목이 여기에 표시됩니다 -->
+  </div>
+
+  <script>
+    const reservationSystem = {
+      reservations: [],
+
+      // 예약 추가 함수 (this 사용)
+      addReservation: function () {
+        const name = document.getElementById('nameInput').value;
+        const dateStr = document.getElementById('dateInput').value;
+        if (!name || !dateStr) {
+          alert('이름과 날짜를 모두 입력하세요.');
+          return;
+        }
+
+        const date = new Date(dateStr);
+        const today = new Date();
+
+        if (date < today.setHours(0, 0, 0, 0)) {
+          alert('오늘 이후의 날짜만 예약할 수 있습니다.');
+          return;
+        }
+
+        // 예약 추가 (배열 사용)
+        this.reservations.push({ name, date });
+        this.renderReservations(); // 예약 목록 다시 그리기
+      },
+
+      // 예약 목록 표시 함수 (화살표 함수 사용)
+      renderReservations: () => {
+        const listEl = document.getElementById('reservationList');
+        const html = reservationSystem.reservations.map((res, i) => {
+          return `<div class="reservation-item">${i + 1}. ${res.name} - ${res.date.toDateString()}</div>`;
+        }).join('');
+        listEl.innerHTML = `<h3>예약 목록</h3>${html}`;
+      }
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>클래스 - private</h3>
+	
+	<script type="text/javascript">
+	class User {
+		// static private 속성
+		static #A;
+		
+		// instance private 속성
+		#b;
+		
+		constructor() {
+			this.#b = 100;
+		}
+		
+		static fun() {
+			User.#A = 10;
+			return User.#A;
+		}
+		
+		sub() {
+			return this.#b;
+		}
+		
+		// private 메서드
+		#test() {
+			return 'hello...';
+		}
+		
+		hello() {
+			return this.#test();
+		}
+	}
+	// console.log(User.#A); // 에러
+	console.log(User.fun());
+	
+	const obj = new User();
+	console.log(obj.sub());
+	console.log(obj.hello());
+	
+	</script>
+
+</body>
+</html>

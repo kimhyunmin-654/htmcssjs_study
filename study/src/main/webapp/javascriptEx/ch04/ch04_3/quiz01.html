@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>Date 객체에 weekday() 메서드를 추가하여 요일을 구하기</h3>
+	
+	<script type="text/javascript">
+	
+	Date.prototype.weekday = function() {
+	 	let day = ['일', '월', '화', '수', '목', '금','토'];
+		return day[this.getDay()];
+	}
+		
+	
+	var today = new Date();
+	console.log(today.weekday()); // 월 
+	
+	
+	</script>
+
+</body>
+</html>

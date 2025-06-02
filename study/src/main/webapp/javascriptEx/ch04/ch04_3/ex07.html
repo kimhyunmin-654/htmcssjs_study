@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>객체 - 프로퍼티 접근 및 나열</h3>
+	
+	<script type="text/javascript">
+	var objs = {
+		name:'홍길동',
+		age:20,
+		result:function(){
+			return this.age>=19?'성인':'미성년자';
+		}
+	};
+	
+	// 속성접근
+	console.log(objs.name) // 도트 표기법으로 접근
+	console.log(objs['name']); // 대괄호 표기법으로 접근
+	
+	// 메소드 접근
+	console.log(objs.result());
+	console.log('---------------');
+	
+	for(let ob in objs) {
+		// ob : 속성이름
+		console.log(ob, objs[ob]);
+			// 프로퍼티 : ob->name, objs[ob] -> '홍길동'
+			// 메서드 : ob->result, objs[ob] -> f() {소스;}
+	}
+	
+	
+	</script>
+
+</body>
+</html>

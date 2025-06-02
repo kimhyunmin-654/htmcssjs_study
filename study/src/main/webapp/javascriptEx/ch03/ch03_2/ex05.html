@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>클래스 - 메서드</h3>
+	
+	<script type="text/javascript">
+	class Rectangle {
+		constructor(width, height) {
+			this.width = width;
+			this.height = height;
+		}
+		
+		// getter
+		get area() {
+			return this.width * this.height;
+		}
+		
+		// 메서드
+		calcArea() {
+			return this.width * this.height;
+		}
+		
+	}
+	
+	const obj = new Rectangle(10, 5);
+	console.log(obj.area);
+	console.log(obj.calcArea());
+	
+	</script>
+
+</body>
+</html>

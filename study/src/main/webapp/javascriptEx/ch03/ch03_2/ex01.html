@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3> 클래스 </h3>
+	
+	<script type="text/javascript">
+	class User {
+		// 생성자 함수
+		constructor({name, age}) {
+			this.name = name;
+			this.age = age;
+		}
+		
+		// 메서드
+		msg() {
+			return `인녕하세요 ${this.name} 입니다.`;
+		}
+	}
+	
+	const obj = new User({name:'홍길동', age:20});
+	console.log(obj.name, obj.age);
+	console.log(obj.msg());
+	console.log(typeof User); // function
+	console.log(typeof User.prototype.constructor); // function
+	console.log(typeof User.prototype.msg); // function
+	console.log(obj instanceof User); // true
+	
+	
+	</script>
+
+</body>
+</html>

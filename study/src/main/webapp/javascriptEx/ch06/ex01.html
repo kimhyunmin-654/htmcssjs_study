@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3> 이벤트 등록 : 인라인 이벤트 헨들러 방식 </h3>
+	
+	<p> <button type="button" onclick="fun()">클릭</button> </p>
+	<p> <button type="button" onclick="fun(); fun2();">클릭 2</button> </p>
+
+	<script type="text/javascript">
+	function fun() {
+		alert('fun...');
+	}
+	
+	function fun2() {
+		alert('fun2...');
+	}
+	
+	</script>
+
+</body>
+</html>

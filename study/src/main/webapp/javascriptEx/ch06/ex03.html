@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>event handler - 이벤트 등록 : addEventListener() 메서드</h3>
+	
+	<p> <button type="button" class="btn"> 확인 </button></p>
+	
+	<script type="text/javascript">
+	const btn = document.querySelector('.btn');
+	
+	// addEventListener()로 등록된 두개의 이벤트가 모두 실행된다.
+	
+	// 첫번째 이벤트 바인딩
+	btn.addEventListener('click', function() {
+		alert('클릭 - 1');
+	})
+	
+	// 두번째 이벤트 바인딩
+	/*
+	btn.addEventListener('click', function() {
+		alert('클릭 - 2');
+	})
+	*/
+	
+	btn.addEventListener('click', () => alert('클릭 -2'));
+
+	</script>
+
+</body>
+</html>
