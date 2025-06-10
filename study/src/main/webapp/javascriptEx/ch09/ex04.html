@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>노드 찾기</h3>
+	
+	<div>
+		<p><a>HTML</a></p>
+		<p class="css"><a>css</a></p>
+		<p>
+			<a>javascript</a>
+			<span>jquery</span>
+		</p>
+	</div>
+	
+	<div class="ss">
+		<div class="s">
+			<div class="c0"><sapn>web</span></div>
+			<div class="c1">javascript</div>
+			<div class="c2">css          html</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		var pELS = document.querySelectorAll('p');
+		
+		// 자식 노드 검색
+		var c1 = pELS[2].children; // 자식 노드(태그만) 검색
+		var c2 = pELS[2].childNodes; // text(문자열, 공백, 엔터등)도 검색 
+		var c3 = pELS[2].getElementsByTagName('a');
+		var c4 = pELS[2].getElementsByTagName('a')[0];
+		
+		console.log(c1); // [a,span] 
+		console.log(c2); // [text, a, text,span,text]
+		console.log(c3); // [a]
+		console.log(c4); // <a>javascript</a>
+		
+		const dcEL = document.querySelector('.c1');
+		
+		var p1 = dcEL.parentElement; // 부모노드(태그만) 
+			// parentNode : 부모노드, 빈공간등을 포함
+		var p2 = dcEL.parentElement.parentElement; // 부모의 부모노드(태그만) 
+		var p3 = dcEL.closest('.ss'); // 가장 가까운 조상
+		
+		console.log(p1); // div.s
+		console.log(p2); // div.ss
+		console.log(p3); // div.ss
+		
+		// 형제 검색
+		var s1 = dcEL.previousElementSibling; // 이진형제(태그만)
+		var s2 = dcEL.nextElementSibling; // 다음형재(태그만)
+			// nextSibling : 다음형제(택스트, 빈공간도 포함)
+		console.log(s1); // div.c0
+		console.log(s2); // div.c2
+		
+		// 텍스트
+		var t1 = s2.firstChild.nodeValue;
+		var t2 = s2.textContent;
+		var t3 = s2.innerText;
+		
+		console.log(t1); // css		html : 공백유지
+		console.log(t2); // css		html : 공백유지
+		console.log(t3); // css html : 공백한칸
+		
+		var tt1 = s1.firstChild.nodeValue;
+		var tt2 = s1.textContent; // 노드 또는 하위 노드의 텍스트 반환
+		var tt3 = s1.innerText;
+		var tt4 = s1.innerHTML;
+		
+		console.log(tt1); // null
+		console.log(tt2); // web
+		console.log(tt3); // web		
+		console.log(tt4); // <sapn>web</sapn>	
+		
+		
+	</script>
+
+</body>
+</html>

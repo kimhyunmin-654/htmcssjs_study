@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3> 키보드 관련 이벤트 </h3>
+	<!--  
+		- ASCII 키 : a~z, 0~9, 엔터등
+	      발생하는 이벤트 : keydown -> keypress -> keyup 순으로 발생
+	      keypress는 사용하지 말것을 권장
+	    - F1 ~ F12, Alt, Ctrl 등 특수키
+	      발생하는 이벤트 : keydown -> keyup 순으로 발생
+	    - ctrl, shift, alt가 눌러진 상태
+	      event.ctrlkey, event.shiftkey, event.altkey 속성으로 확인
+	      [예]
+	      inputs.onkeydown = function(e) {
+	      	if(e.ctrlkey) {
+	      	}
+	      });
+	 -->
+	 
+	<p> <input type="text" id="inputs"></p>
+	<hr>
+	<div id="resultLayout"></div>
+
+	<script type="text/javascript">
+		const inputs = document.querySelector('#inputs');
+		const result = document.querySelector('#resultLayout');
+		
+		inputs.onkeydown = function(e) {
+			let keyCode = e.keyCode;
+				// 키보드 값 변환, a와 A 모두 65 반환
+				// keyCode 대신 key 사용을 권장
+			let key = e.key;
+				// 'a'를 누르면 'a', 'A'를 누르면 'A'를 반환
+			
+			let s = 'keydown : keyCode - ' + keyCode + ', key - ' + key;
+			result.innerHTML = s;
+			
+		}
+		
+		inputs.onkeyup = function(e) {
+			let keyCode = e.keyCode;				
+			let key = e.key;
+			
+			let s = '<br>keyup : keyCode - ' + keyCode + ', key - ' + key;
+			result.innerHTML += s;
+			
+		}		
+		
+	</script>
+
+
+</body>
+</html>

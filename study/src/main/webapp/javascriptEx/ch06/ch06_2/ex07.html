@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+<style type="text/css">
+.box {
+	width: 150px;
+	height: 150px;
+	border: 1px solid black;
+	text-align: center;
+}
+</style>
+
+</head>
+<body>
+
+	<h3>마우스 관련 이벤트 : mouseout, mouseleave</h3>
+	<!-- 
+		- mouseout
+		  : 마우스가 벗어날때 발생 
+		  : 부모요소에서 자식요소도 이동해도 이벤트가 발생(버블링)
+		- mouseleave
+		  : 마우스가 벗어날때 발생
+		  : 부모요소에서 자식요소로 이동할때는 발생하지 않으며
+		  	이벤트를 등록한 해당 요소를 벗어나야 이벤트가 발생
+	 -->  
+
+	<div class="box1 box">
+		<p><a href="#">자바</a></p>
+		<p><a href="#">스프링</a></p>
+		<p><a href="#">오라클</a></p>
+	</div>
+	<hr>
+	
+	<div class="box2 box">
+		<p><a href="#">HTML</a></p>
+		<p><a href="#">CSS</a></p>
+		<p><a href="#">javascript</a></p>
+	</div>
+	
+	<script type="text/javascript">
+		const boxEl1 = document.querySelector('.box1');
+		const boxEl2 = document.querySelector('.box2');
+		
+		// 자식안으로 
+		boxEl1.addEventListener('mouseout', function(e) {
+			e.currentTarget.style.background = 'green';
+		});
+		
+		// 완전히 등록된 객체를 빠져나갈때 이벤트 발생 
+		boxEl2.addEventListener('mouseleave', function(e) {
+			e.currentTarget.style.background = 'yellow';
+		});
+	
+	</script>
+	
+
+</body>
+</html>

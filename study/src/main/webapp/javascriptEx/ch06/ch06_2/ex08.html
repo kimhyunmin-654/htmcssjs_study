@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<style type="text/css">
+.box {
+	width: 300px;
+	height: 700px;
+	border: 3px dotted gray;
+}
+
+</style>
+
+</head>
+<body>
+
+	<h3>마우스 좌표</h3>
+	
+	<div id="resultLayout" class="box"></div>
+	
+	<script type="text/javascript">
+		const layout = document.querySelector('#resultLayout');
+		
+		layout.addEventListener('click', function(e) {
+			let x = e.clientX; // document의 가장 왼쪽지점 부터 x 좌표(스크롤바는 제외)
+			let y = e.clientY;
+			
+			let x1 = e.pageX; // client 좌표와 동일하지만 스크롤바 이동만큼 포함
+			let y1 = e.pageY;
+			
+			let x2 = e.offsetX; // 이벤트 발생 객체 내에서의 x 좌표
+			let y2 = e.offsetY;
+			
+			let x3 = e.screenX; // 스크린에 상대적인 마우스 좌표, 화면 가장 왼족 위 기준
+ 			let y3 = e.screenY;
+			
+			let s = `client x;${x}, y:${y}<br>`;
+			s += `page x;${x1}, y:${y1}<br>`;
+			s += `offset x;${x2}, y:${y2}<br>`;
+			s += `screen x;${x3}, y:${y3}<br>`;
+			
+			layout.innerHTML = s;
+			
+		});
+		
+	</script>
+
+</body>
+</html>

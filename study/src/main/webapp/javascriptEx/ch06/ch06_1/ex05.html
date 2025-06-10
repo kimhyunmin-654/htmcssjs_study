@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>event handler - 이벤트 제거</h3>
+	
+	<p>인라인 이벤트 핸들러 방식</p>
+	<p>
+		<button type="button" onclick="sub(this);"> 확인 </button>
+	</p>
+	
+	<script type="text/javascript">
+		function sub(obj) {
+			alert('한번만 클릭 된다.');
+			
+			obj.removeAttribute('onclick');
+		}	
+	</script>
+	<hr>
+
+	<p>프로퍼티 방식</p>
+	<p>
+		<button type="button" class="btn"> 확인 </button>
+	</p>
+	
+	
+	<script type="text/javascript">
+		const btn = document.querySelector('.btn');
+		
+		btn.onclick = function() {
+			alert('한번클릭 후 제거..')
+			
+			btn.onclick = null;
+		}
+	</script>
+	<hr>
+	
+	<p>addEventListener() / removeEventListener()</p>
+	<p>
+		<button type="button" class="btn2">확인</button>
+		<button type="button" class="btn3">제거</button>
+	</p>
+	
+	<script type="text/javascript">
+		const btn2 = document.querySelector('.btn2');
+		const btn3 = document.querySelector('.btn3');
+		
+		const fn = () => alert('반가워요..');
+		
+		btn2.addEventListener('click', fn);
+		
+		/*
+		btn3.addEventListener('click', function() {
+			btn2.removeEventListener('click', fn);
+		});
+		*/
+		
+		btn3.addEventListener('click', () => btn2.removeEventListener('click', fn));		
+		
+
+		
+	</script>
+
+</body>
+</html>

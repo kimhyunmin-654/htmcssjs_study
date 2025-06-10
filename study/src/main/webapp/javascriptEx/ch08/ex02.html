@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>정규식 - 치환</h3>
+	
+	<script type="text/javascript">
+		var s, p, a;
+		
+		s = 'web 자바 jsp 자바 html';
+		
+		p = /자바/;
+		a = s.replace(p, 'java');
+		console.log(a); // web java jsp 자바 html
+		
+		p = /자바/g; // g : global match. 일치하는 모든 문자 검색(치환할때 유용)
+		a = s.replace(p, 'java');
+		console.log(a); // web java jsp java html
+		
+		// html 문자를 기호로 변환
+		function symbolHtml(str) {
+			if( ! str) return str;
+			
+			str = str.replace(/</g, '&lt;');
+			str = str.replace(/>/g, '&gt;');
+			str = str.replace(/\"/g, '&quot;');
+			str = str.replace(/\'/g, '&#39;');
+			str = str.replace(/\(/g, '&#40;');
+			str = str.replace(/\)/g, '&#41;');
+			
+			return str;
+		}
+		
+		s = '<a href="#">테스트</a>'
+		console.log(s);
+		console.log(symbolHtml(s));
+		
+		// 기호를 html 문자로
+		function restoreHtml(str) {
+			if( ! str) return str;
+			
+			str = str.replace(/\&lt;/gi, '<');
+			str = str.replace(/\&gt;/gi, '>');
+			str = str.replace(/\&#40;/gi, '(');
+			str = str.replace(/\&#41;/gi, ')');
+			str = str.replace(/\&#39;/gi, '\'');
+			str = str.replace(/\&quot;/gi, '"');
+			
+			return str;
+		}
+		
+		s = '<a href="#">테스트</a>'
+		console.log(s);
+		console.log(symbolHtml(s));
+		
+		
+	</script>
+
+</body>
+</html>

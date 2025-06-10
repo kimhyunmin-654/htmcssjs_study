@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3> 선택한 파일들의 파일명 </h3>
+
+	<div style="margin: 5px;">
+		<form name="frm">
+			<p> <input type="file" name="selectFile" multiple="multiple"> </p>
+			<p> <button type="button" onclick="sendOk();"> 등록 </button></p>
+		</form>
+	</div>
+	
+	<script type="text/javascript">
+		function sendOk() {
+			alert('ok...');
+		}
+		
+		const allfiles = function() {
+			const fileInput = document.querySelector('form input[name=selectFile]');
+			const files = fileInput.files;
+			
+			for(let file of files) {
+				console.log(file.name);
+			}
+			
+		}
+		
+		document.querySelector('form input[name=selectFile]').onchange = allfiles;
+		
+	</script>
+
+</body>
+</html>

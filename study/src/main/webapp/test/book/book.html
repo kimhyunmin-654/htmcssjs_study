@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>좋아하는 책 목록</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h3 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .container {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: #28a745;
+            color: #fff;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .book-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+        .book-item {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+        }
+        .book-item input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .book-item span {
+            flex: 1;
+            font-size: 14px;
+        }
+        .book-item button {
+            background-color: #dc3545;
+        }
+        .book-item button:hover {
+            background-color: #c82333;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .summary {
+            margin-top: 15px;
+            padding: 8px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <h3>좋아하는 책 목록</h3>
+    <div class="container">
+        <div class="input-group">
+            <input type="text" id="bookInput" placeholder="책 제목을 입력하세요">
+            <button onclick="addBook()">추가</button>
+        </div>
+        <ul class="book-list" id="bookList"></ul>
+        <div class="controls">
+            <button onclick="filterBooks('all')">모두 보기</button>
+            <button onclick="filterBooks('read')">읽은 책</button>
+            <button onclick="filterBooks('unread')">안 읽은 책</button>
+            <button onclick="showSummary()">읽은 책 요약</button>
+        </div>
+        <div class="summary" id="summary"></div>
+    </div>
+
+    <script>
+        // 책 목록 배열 (초기 데이터)
+        let books = [
+            { id: 1, title: '해리 포터', read: false },
+            { id: 2, title: '반지의 제왕', read: true },
+            { id: 3, title: '셜록 홈즈', read: false }
+        ];
+
+        // TODO: 아래 함수들을 작성하여 배열 문법을 연습하세요.
+        // 힌트: forEach, push, splice, filter, join 등을 사용하세요.
+
+        // 1. addBook(): 입력값을 books 배열에 추가하고 목록을 다시 렌더링
+        // - 입력값이 비어 있으면 경고 표시
+        // - 새 책 객체: { id: 고유ID(예: Date.now()), title: 입력값, read: false }
+        // - 입력 필드 초기화
+        function addBook() {
+            const input = document.getElementById('bookInput');
+            const title = input.value.trim();
+            
+            if(!title) {
+            	alert('책 제목을 입력해주세요.');
+            	return;
+            }
+            books.push = ({ id:Date.now(), title, read:false });
+            input.value = '';
+            renderBooks(books);
+            
+        }
+
+        // 2. renderBooks(booksToShow): books 배열을 받아 HTML 목록으로 렌더링
+        // - bookList(ul)에 li 요소로 각 책을 추가
+        // - 각 li는 체크박스(읽음 상태), 제목, 삭제 버튼 포함
+        // - 체크박스 클릭 시 toggleBook(id) 호출, 삭제 버튼 클릭 시 removeBook(id) 호출
+        function renderBooks(booksToShow) {
+            const bookList = document.getElementById('bookList');
+            bookList.innerHTML = '';
+            booksToShow.forEach(book => {
+            	const li = document.createElement('li');
+            	li.className = 'book-item';
+            	li.innerHTML = `
+            		<input type="checkbox" ${book.read ? 'checked' : ''} onclick="toggleBook(${book.id})">
+                    <span style="${book.read ? 'text-decoration: line-through' : ''}">${book.title}</span>
+                    <button onclick="removeBook(${book.id})">삭제</button>
+            	`;
+            	bookList.appendChild(li);
+            });
+        }
+        
+
+        // 3. toggleBook(id): 해당 ID의 책 읽음 상태를 토글
+        // - books 배열에서 해당 책 찾아 read 속성 반전
+        // - 목록 다시 렌더링
+        function toggleBook(id) {
+            books = books.map(book => book.id === id ? { ...book, read: !book.read } : book);
+            renderBooks(books);
+        }
+
+        // 4. removeBook(id): 해당 ID의 책 삭제
+        // - books 배열에서 해당 책 제거
+        // - 목록 다시 렌더링
+        function removeBook(id) {
+           	books = books.filter(book => book.id !== id);
+           	renderBooks(books); 
+           	
+           	
+        }
+
+        // 5. filterBooks(type): 'all', 'read', 'unread'에 따라 목록 필터링
+        // - type에 따라 books 배열 필터링 후 renderBooks 호출
+        function filterBooks(type) {
+            const filteredBooks = type == 'all' ? books :
+            					type === 'read' ? books.filter(book => book.read) :
+            					books.filter(book => !book.read);
+            renderBooks(filteredBooks);
+        }
+
+        // 6. showSummary(): 읽은 책 제목을 요약해 표시
+        // - 읽은 책만 추출해 summary div에 표시
+        // - 예: "읽은 책: 반지의 제왕"
+function showSummary() {
+    const summaryDiv = document.getElementById('summary');
+    const readBooks = books.filter(book => book.read).map(book => book.title);
+    summaryDiv.textContent = readBooks.length ? `읽은 책: ${readBooks.join(', ')}` : '읽은 책이 없습니다.';
+}
+
+        // 초기 렌더링
+        window.addEventListener("DOMContentLoaded", () => {
+            renderBooks(books);
+        });
+    </script>
+</body>
+</html>

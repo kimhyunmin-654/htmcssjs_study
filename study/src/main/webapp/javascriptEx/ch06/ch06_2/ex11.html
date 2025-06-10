@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<style type="text/css">
+.WB { background: white; border: 1px solid #00f; }
+.yb { background: yellow; border: 1px solid tomato; }
+
+form input { outline: none; }
+
+</style>
+
+</head>
+<body>
+
+	<h3>focus, blue 이벤트</h3>
+	
+	<form>
+		<p> 이름 : <input type="text" name="name" class="wb inputs"></p>
+		<p> 패스워드 : <input type="password" name="pwd" class="wb inputs"></p>
+		<p> 나이 : <input type="text" name="age" class="wb inputs"></p>
+		<p>
+			<button type="button"> 확인 </button>
+		</p>
+	</form>
+	
+	<script type="text/javascript">
+	const els = document.querySelectorAll('.inputs');
+	for(let el of els) {
+		// 포커스를 받았을 때
+		el.addEventListener('focus', e => inputFocus(e)); 
+		
+		// 포커스를 잃었을 때
+		el.addEventListener('blur', e => inputBlur(e)); 
+	}
+	
+	function inputFocus(e) {
+		e.target.classList.replace('wb', 'yb'); // 클래스 교체
+	}
+	
+	function inputBlur(e) {
+		e.target.classList.replace('yb', 'wb');
+		
+	}
+	
+	</script>
+
+</body>
+</html>

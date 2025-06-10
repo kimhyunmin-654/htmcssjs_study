@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>키보드 관련 이벤트</h3>
+	
+	<p>숫자만 : <input type="text" class="inputNum"></p>
+	<script type="text/javascript">
+		const inputNumEL = document.querySelector('.inputNum');
+		
+		const onlyNumber = e => {
+			let key = e.key;
+			
+			if(['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight','Delete'].includes(key)) {
+				return;
+			}
+			
+			if(key < '0' || key > '9') {
+				e.preventDefault();
+			}
+			
+			
+			/*
+			if(! /[0-9]/.test(key)) {
+				e.preventDefault();				
+			}
+			*/
+		};
+		inputNumEL.addEventListener('keydown', e => onlyNumber(e));
+	</script>
+	<hr>
+	
+	<p>영문자만 : <input type="text" class="inputAlph"></p>
+	<script type="text/javascript">
+		const inputAlphEL = document.querySelector('.inputAlph');
+		
+		const onlyAlph = e => {
+			let key = e.key;
+			
+			if(['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Delete'].includes(key)) {
+				return;
+			}
+			
+			/*
+			if((key < 65 || key >90) && (key<97 || key>122)) {
+				e.preventDefault();
+			}
+			*/
+			
+			
+			if(! /[a-zA-Z]/.test(key)) {
+				e.preventDefault();
+			}
+			
+		};
+		inputAlphEL.addEventListener('keydown', e => onlyAlph(e));		
+	</script>
+	<hr>
+	
+	<p>영숫자 : <input type="text" class="inputAlphNum"></p>
+	<script type="text/javascript">
+		const inputAlphNumEL = document.querySelector('.inputAlphNum');
+		
+		const onlyAlphNum = e => {
+			let key = e.key;
+			
+			if(['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Delete'].includes(key)) {
+				return;
+			}
+			
+			if(! /^\w{1}$/.test(key)) {
+				e.preventDefault();
+			}
+			
+		};
+		inputAlphNumEL.addEventListener('keydown', e => onlyAlphNum(e));		
+	</script>
+	<hr>
+	
+	<p>한글삭제 : <input type="text" class="inputDeleteKor"></p>
+	<script type="text/javascript">
+		const inputDeleteKor = document.querySelector('.inputDeleteKor');
+		
+		const deleteKorean = e => {
+			// const target = e.currentTarget;
+			const target = e.target;
+			
+			target.value = target.value.replace(/[ㄱ-ㅎㅏ-ㅣ가-힣]/g, '');
+						
+		};
+		inputDeleteKor.addEventListener('keyup', e => deleteKorean(e));		
+	</script>
+	<hr>
+	
+	<p>한글만 : <input type="text" class="inputKor"></p>
+	<script type="text/javascript">
+		const inputKorEL = document.querySelector('.inputKor');
+		
+		const onlyKorean = e => {
+			let key = e.key;
+			
+			if(['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Delete'].includes(key)) {
+				return;
+			}
+			
+			if(! /[가-힣]/.test(key)) {
+				e.preventDefault();
+			}
+						
+		};
+		inputKorEL.addEventListener('keydown', e => onlyKorean(e));		
+	</script>
+	<hr>
+	
+	<p>한글입력제한 : <input type="text" class="inputNoKor"></p>
+	<script type="text/javascript">
+		const inputNoKorEL = document.querySelector('.inputNoKor');
+		
+		const inputNoKor = e => {
+			const self = e.currentTarget;
+			self.blur(); // 포커스를 없앰
+			
+			// 다음 리페인트전 실행
+			requestAnimationFrame( () => self.focus() ); 
+		};
+		// compositionstart : 한글등 조합문자를 입력할때 발생하는 이벤트
+		inputNoKorEL.addEventListener('compositionstart', e => inputNoKor(e));		
+	</script>
+	<hr>
+	
+	
+</body>
+</html>

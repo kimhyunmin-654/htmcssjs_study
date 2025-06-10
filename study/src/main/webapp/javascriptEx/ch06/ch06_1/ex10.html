@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+<style type="text/css">
+.box1 { background: #ccc; padding : 20px; display: block; }
+.box1 { background: #aaa; padding : 20px; display: block; }
+.box1 { background: #888; padding : 20px; display: block; }
+.console { background: #47a; padding: 20px; margin: 5px 0;}
+</style>
+
+</head>
+<body>
+
+	<h3>stopImmediatePropagation</h3>
+	<!-- 
+		
+	  -->
+
+	<div class="box1">
+		DIV 영역
+		<p class="box2">
+			P영역
+			<span class="box3">
+				SPAN 영역
+			</span>
+		</p>
+	</div>
+	<hr>
+	
+	<div class="console"></div>
+	
+	<script type="text/javascript">
+		const box1 = document.querySelector('.box1');
+		const box2 = document.querySelector('.box2');
+		const box3 = document.querySelector('.box3');
+		const console = document.querySelector('.console');
+		
+		box1.addEventListener('click', function(e) {
+			console.innerHTML += 'DIV 클릭<br>';	
+		});
+		
+		box2.addEventListener('click', function(e) {
+			console.innerHTML += 'p 클릭<br>';	
+		});
+		
+		box3.addEventListener('click', function(e) {
+			console.innerHTML += 'SPAN 클릭 - 1<br>';
+			
+			// 상위로 이벤트가 전파되지 않고 중단된다.
+			// e.stopPropagation();
+			
+			// e.preventDafault();
+			
+			// 상위와 같은 레벨의 이벤트도 전파되지 않는다.
+			e.stopImmediatePropagation();
+			
+		});
+		
+		box3.addEventListener('click', function(e) {
+			console.innerHTML += 'SPAN 클릭 - 2<br>';
+			
+			
+		});
+		
+	</script>
+	
+</body>
+</html>

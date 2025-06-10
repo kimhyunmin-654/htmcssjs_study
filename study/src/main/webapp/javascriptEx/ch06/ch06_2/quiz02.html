@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>문제 풀이</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<style>
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.container {
+	width: 500px;
+	padding: 20px;
+	text-align: left;
+}
+
+.q {
+	display: none;
+}
+.timer {
+	font-weight: bold;
+	color: red;
+}
+.result {
+	font-weight: bold;
+	color: green;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h3>| 문제풀이</h3>
+
+<div>
+	<p>총 3문제</p>
+	<p>문제당 제한시간 <span class="timer">30</span>초</p>
+	<button type="button" id="startBtn">문제 시작</button>
+</div>
+<br>
+
+<div class="q q1">
+	문제1 : 다음 중 객체지향 언어는?<br>
+	<input type="radio" name="q1" value="1">java
+	<input type="radio" name="q1" value="2">python
+	<input type="radio" name="q1" value="3">C
+	<input type="radio" name="q1" value="4">R
+	<br><br>
+	<button type="button" class="nextBtn">다음 문제</button>			
+</div>
+
+<div class="q q2">
+	문제2 : 다음 중 DBMS는?<br>
+	<input type="radio" name="q2" value="1">A
+	<input type="radio" name="q2" value="2">Oracle
+	<input type="radio" name="q2" value="3">B
+	<input type="radio" name="q2" value="4">C
+	<br><br>
+	<button type="button" class="nextBtn">다음 문제</button>
+</div>
+
+<div class="q q3">
+	문제3 : 다음 중 HYPERTEXT는?<br>
+	<input type="radio" name="q3" value="1">HTML
+	<input type="radio" name="q3" value="2">A
+	<input type="radio" name="q3" value="3">B
+	<input type="radio" name="q3" value="4">C
+	<br><br>
+	<button type="button" id="submitBtn">제출</button>
+</div>
+
+<p class="result"></p>
+</div>
+
+<script>
+// 현재 문제 인덱스 (0부터 시작)
+let currentQuestion = 0;
+// 타이머 객체
+let timer;
+// 남은 시간 (문제당 30초)
+let timeLeft = 30;
+
+// 모든 문제 div 요소
+const questions = document.querySelectorAll('.q');
+// 타이머 숫자를 표시
+const timerDisplay = document.querySelector('.timer');
+// 결과를 표시
+const resultDisplay = document.querySelector('.result');
+
+// 정답 객체 : 문제 번호화 정답 value 매핑
+const correctAnswers = {
+	q1: "1",
+	q2: "2",
+	q3: "1"
+};
+
+// 타이머 시작 함수
+function startTimer() {
+	timeLeft = 30; // 문제당 제한 시간 30초로 초기화
+	timerDisplay.textContent = timeLeft; // 초기 시간 숫자를 화면에 표시
+
+	// setInterval() : 특정 간격마다 코드를 반복 실행
+	timer = setInterval(() => {
+		timeLeft--; // 1초마다 1 감소
+		timerDisplay.textContent = timeLeft; // 남은 시간을 화면에 갱신
+		
+		// clearInterval : setInterval()로 실행 중인 타이머 종료
+		if (timeLeft <= 0) { // 시간이 0이하가 되면
+			clearInterval(timer); // 타이머 멈춤
+			nextQuestion(); // 자동으로 다음 문제로 넘어감
+		}
+	}, 1000); // 1초 마다 위 로직 반복
+}
+
+// 문제 표시 함수
+function showQuestion(index) {
+	// 모든 문제(.q 클래스)를 일단 화면에서 숨김 처리
+	questions.forEach(q => q.style.display = 'none');
+	
+	// index번째 문제(q1, q2, q3 중 하나)가 존재할 경우에만 실행
+	if (questions[index]) {
+		// 해당 문제를 화면에 표시(block 레이아웃으로 표시)
+		questions[index].style.display = 'block';
+		
+		// 문제를 표시할 때마다 타이머를 새로 시작 (30초 제한 타이머)
+		startTimer();
+	}
+}
+
+// 다음 문제로 넘어가는 함수
+function nextQuestion() {
+	// 기존에 실행 중인 타이머(setInterval)를 중지시킴
+	// => 문제를 넘길 때마다 새로운 타이머를 설정해야 하므로, 이전 타이머 제거
+	clearInterval(timer);
+	
+	// 현재 문제 번호를 1 증가시켜 다음 문제로 이동
+	currentQuestion++;
+	
+	// 아직 보여줄 문제가 남아있는 경우 (예: 0, 1, 2 -> 총 3문제)
+	if (currentQuestion < questions.length) {
+		// 다음 문제를 화면에 표시 + 타이머 다시 시작
+		showQuestion(currentQuestion);
+	} else {
+		// 모든 문제를 다 푼 경우 (currentQuestion이 총 문제 수 이상이면)
+		// 마지막 문제 화면과 제출 버튼을 보여줌
+		showSubmitButton();
+	}
+}
+
+// 제출 버튼 보이기
+function showSubmitButton() {
+	// 먼저 모든 문제 요소를 화면에서 숨긴다 (display: none 설정)
+	// => 이전 문제나 이전 상태가 화면에 남지 않도록 하기 위함
+	questions.forEach(q => q.style.display = 'none');
+	
+	// 마지막 문제(q3)를 다시 화면에 표시한다
+	// index가 0부터 시작하므로 2번째 인데스는 3번째 문제 (문제3)
+	questions[2].style.display = 'block';
+	
+	// 타이머를 다시 시작해서 마지막 문제에도 제한 시간 30초를 적용
+	startTimer();
+}
+
+// 정답 채점
+function gradeQuiz() {
+	// 1. 타이머를 멈춘다 (시간 초과나 추가 진행 방지)
+	clearInterval(timer);
+	
+	// 2. 점수를 저장할 변수 초기화 (처음엔 0점)
+	let score = 0;
+	
+	// 3. 정답 객체(correctAnswers)에 있는 각 문제 키(q1, q2, q3)를 순회
+	for (let key in correctAnswers) {
+		// 4. 현재 문제(key)에 대해 사용자가 선택한 라디오 버튼(input) 요소를 찾음
+		// :checked 선택자는 체크된 라디오 버튼을 찾는다.
+		const selected = document.querySelector(`input[name="${key}"]:checked`);
+		
+		// 5. 사용자가 선택한 답이 존재하고, 그 값이 정답(correctAnswers[key])과 같으면
+		if (selected && selected.value === correctAnswers[key]) {
+			// 점수를 1점 증가
+			score++;
+		}
+	}
+	// 6. 채점 결과를 화면에 표시
+	resultDisplay.textContent = `총 3문제 중에 ${score}문제 정답입니다.`;
+}
+
+//이벤트 연결 부분
+
+//1. '문제 시작' 버튼을 찾아 클릭 이벤트 리스너 등록
+document.getElementById('startBtn').addEventListener('click', () => {
+	// 1-1. 버튼 클릭 시, '문제 시작' 버튼을 화면에서 숨긴다
+	document.getElementById('startBtn').style.display = 'none';
+
+	// 1-2. 첫 번째 문제(인덱스 0)를 화면에 표시하는 함수 호출
+	showQuestion(currentQuestion);
+});
+
+//2. 모든 '다음 문제' 버튼을 찾아 각각 클릭 이벤트 리스너 등록
+document.querySelectorAll('.nextBtn').forEach(btn => {
+	btn.addEventListener('click', () => {
+		// 2-1. 각 '다음 문제' 버튼 클릭 시 다음 문제로 넘어가는 함수 호출
+		nextQuestion();
+	});
+});
+
+//3. '제출' 버튼을 찾아 클릭 이벤트 리스너 등록
+document.getElementById('submitBtn').addEventListener('click', () => {
+	// 3-1. 제출 버튼 클릭 시, 퀴즈 채점 함수 호출
+	gradeQuiz();
+});
+</script>
+
+
+</body>
+</html>

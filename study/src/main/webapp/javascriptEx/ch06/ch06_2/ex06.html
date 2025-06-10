@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+<style type="text/css">
+.box {
+	width: 150px; height: 150px; border: 1px solid black;
+}
+
+</style>
+
+</head>
+<body>
+
+	<h3>마우스 관련 이벤트</h3>
+
+	<div class="box"></div>
+	<hr>
+	
+	
+	
+	<script type="text/javascript">
+		const boxEL = document.querySelector('.box');
+		
+		/*
+			- style을 지정하는 css 속성명은 캐멀케이스(carmel case) 형식을 사용
+			- 형식
+			  객채.style.스타일속성 = 값
+			  단위가 있는 경우 문자열로 표시하며 단위는 생략 불가
+			- 사용 예
+			  : background-color 는 backgroundColor로 표기
+			  : '-' 이 들어가면 안된다.
+		*/
+		
+		boxEL.addEventListener('mouseover', function(e) {
+			e.currentTarget.style.backgroundColor = '#ff0';
+		});
+		
+		boxEL.addEventListener('mouseout', function(e) {
+			e.currentTarget.style.backgroundColor = '#fff';
+			
+		});
+	</script>
+	
+</body>
+</html>

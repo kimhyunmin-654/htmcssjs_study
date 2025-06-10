@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+* { padding: 0; margin: 0; }
+*, *::after, *::before { box-sizing: border-box; }
+    /* 모든요소, 모든 ::after 요소, 모든 ::before 요소 */
+
+body {
+	font-family:"Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
+	font-size: 14px;
+	color: #222;
+}
+
+a { color: #222; text-decoration: none; cursor: pointer; }
+a:active, a:hover { color: #f28011; text-decoration: underline; }
+
+/* form-control */
+.btn {
+	color: #333;
+	border: 1px solid #999;
+	background-color: #fff;
+	padding: 5px 10px;
+	border-radius: 4px;
+	font-weight: 500;
+	cursor:pointer;
+	font-size: 14px;
+	font-family: "맑은 고딕", 나눔고딕, 돋움, sans-serif;
+	vertical-align: baseline;
+}
+.btn:active, .btn:focus, .btn:hover {
+	background-color: #f8f9fa;
+	color:#333;
+}
+
+.form-control {
+	border: 1px solid #999; border-radius: 4px; background-color: #fff;
+	padding: 5px 5px; 
+	font-family: "맑은 고딕", 나눔고딕, 돋움, sans-serif;
+	vertical-align: baseline;
+}
+.form-control[readonly] { background-color:#f8f9fa; }
+
+textarea.form-control { height: 170px; resize : none; }
+
+.form-select {
+	border: 1px solid #999; border-radius: 4px; background-color: #fff;
+	padding: 4px 5px; 
+	font-family: "맑은 고딕", 나눔고딕, 돋움, sans-serif;
+	vertical-align: baseline;
+}
+.form-select[readonly] { background-color:#f8f9fa; }
+
+textarea:focus, input:focus { outline: none; }
+input[type=checkbox], input[type=radio] { vertical-align: middle; }
+
+/* table */
+.table { width: 100%; border-spacing: 0; border-collapse: collapse; }
+.table th, .table td { padding-top: 10px; padding-bottom: 10px; }
+
+.table-border thead > tr { border-top: 2px solid #212529; border-bottom: 1px solid #ced4da; }
+.table-border tbody > tr { border-bottom: 1px solid #ced4da; }
+.table-border tfoot > tr { border-bottom: 1px solid #ced4da; }
+
+/* container */
+.body-container { width: 800px; margin: 30px auto; }
+
+.title { width:100%; font-size: 16px; font-weight: bold; padding: 13px 0; }
+
+.table-list thead > tr { background: #f8f9fa; }
+.table-list td, .table-list th { border: 1px solid #ced4da; }
+.table-list td { text-align: center; padding-top: 3px; padding-bottom: 3px; }
+
+.move-top, .move-up, .move-down, .move-bottom {
+	cursor: pointer;
+}
+.move-top:hover, .move-up:hover, .move-down:hover, .move-bottom:hover {
+	color: tomato;
+}
+
+</style>
+</head>
+<body>
+
+<div class="body-container">
+	<div class="title">
+	    <h3><span>|</span> 성적처리</h3>
+	</div>
+	
+	<table class="table table-list">
+	<thead>
+		<tr>
+			<th width="70">학번</th>
+			<th width="100">이름</th>
+			<th width="100">생년월일</th>
+			<th width="60">국어</th>
+			<th width="60">영어</th>
+			<th width="60">수학</th>
+			<th width="60">총점</th>
+			<th width="70">평균</th>
+			<th>이동</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-hak="1001">1001</td>
+			<td>홍길동</td>
+			<td>2000-10-10</td>
+			<td>65</td>
+			<td>85</td>
+			<td>75</td>
+			<td>225</td>
+			<td>75</td>
+			<td>
+				<span class="move-top">가장위</span> | <span class="move-up">위로</span> | 
+				<span class="move-down">아래로</span> | <span class="move-bottom">가장아래</span>
+			</td>
+		</tr>
+		<tr>
+			<td data-hak="1002">1002</td>
+			<td>다자바</td>
+			<td>2000-07-07</td>
+			<td>90</td>
+			<td>80</td>
+			<td>100</td>
+			<td>270</td>
+			<td>90</td>
+			<td>
+				<span class="move-top">가장위</span> | <span class="move-up">위로</span> | 
+				<span class="move-down">아래로</span> | <span class="move-bottom">가장아래</span>
+			</td>
+		</tr>		
+		<tr>
+			<td data-hak="1003">1003</td>
+			<td>하자바</td>
+			<td>2000-08-07</td>
+			<td>70</td>
+			<td>80</td>
+			<td>90</td>
+			<td>240</td>
+			<td>80</td>
+			<td>
+				<span class="move-top">가장위</span> | <span class="move-up">위로</span> | 
+				<span class="move-down">아래로</span> | <span class="move-bottom">가장아래</span>
+			</td>
+		</tr>		
+		<tr>
+			<td data-hak="1004">1004</td>
+			<td>이순신</td>
+			<td>1999-07-07</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>300</td>
+			<td>100</td>
+			<td>
+				<span class="move-top">가장위</span> | <span class="move-up">위로</span> | 
+				<span class="move-down">아래로</span> | <span class="move-bottom">가장아래</span>
+			</td>
+		</tr>		
+		<tr>
+			<td data-hak="1005">1005</td>
+			<td>스프링</td>
+			<td>2001-03-02</td>
+			<td>75</td>
+			<td>95</td>
+			<td>85</td>
+			<td>255</td>
+			<td>85</td>
+			<td>
+				<span class="move-top">가장위</span> | <span class="move-up">위로</span> | 
+				<span class="move-down">아래로</span> | <span class="move-bottom">가장아래</span>
+			</td>
+		</tr>
+	</tbody>	
+	</table>
+</div>
+
+<script type="text/javascript">
+const btnTopELS = document.querySelectorAll('.move-top');
+const btnupELS = document.querySelectorAll('.move-up');
+const btnDownELS = document.querySelectorAll('.move-down');
+const btnBottomELS = document.querySelectorAll('.move-bottom');
+
+
+for(let el of btnTopELS) {
+	el.addEventListener('click', e => {
+		const trEL = e.target.closest('tr');
+		
+		trEL.closest('tbody').firstElementChild.before(trEL);
+	});
+}
+
+for(let el of btnupELS) {
+	el.addEventListener('click', e => {
+		const trEL = e.target.closest('tr');
+		
+		trEL.previousElementSibling && trEL.previousElementSibling.before(trEL);
+	});
+}
+
+for(let el of btnDownELS) {
+	el.addEventListener('click', e => {
+		const trEL = e.target.closest('tr');
+		
+		trEL.nextElementSibling && trEL.nextElementSibling.after(trEL);
+	});
+}
+
+for(let el of btnBottomELS) {
+	el.addEventListener('click', e => {
+		const trEL = e.target.closest('tr');
+		
+		trEL.closest('tbody').lastElementChild.after(trEL);
+	});
+}
+
+
+</script>
+
+</body>
+</html>

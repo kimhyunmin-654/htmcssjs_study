@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>DOMContentLoaded 외 load</h3>
+	<!-- 
+	  - DOMContentLoaded
+	  	: HTML 문서가 모두 구문분식되고 지연된 스크립트가 다운로드되고 실행
+	  	: 이미지 파일이나 스타일 시트등의 기타 자원은 기다리지 않는다.
+	  	
+	  - load
+	  	: 모든 리소스(이미지, css 등)가 다운로드된 다음에 이벤트 호출
+	  	: HTML로 DOM 트리가 완성되고, 이미지 스타일 시트등의 외부 자원이 모두 
+	  	  불러오는 것이 종료 되었을때 발생
+	  	: 이미지 리소스가 많은 경우 다 불러온 다음에 실행되므로 속도 저하가 발생
+	  - js 로딩 -> DOMContentLoaded -> load 순 
+	 -->
+	
+	
+	<script type="text/javascript">
+	window.addEventListener('DOMContentLoaded', () => { console.log('DOMContentLoaded'); })
+	
+	window.addEventListener('load', () => { console.log('load'); })
+	
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>정규식 패턴</h3>
+	
+	<script type="text/javascript">
+		var p, s;
+		// 5 ~ 10 문자로 영문자와 하나이상의 숫자나 특수문자 포함
+		// (?=x)는 개수를 카운트하는것이 아니라 존재 여부를 판단
+		p = /^(?=.*[a-z])(?=.*[0-9]|.*[~!@#$%^&*-+=]).{5,10}$/i;
+		s = 'abcd123!@#';
+		console.log(p.test(s)); // true
+		
+		// 2~4이내의 한글 또는 2~10자 이내의 영문이름
+		p = /(^[가-힣]{2,4}$)|(^[a-z]{2,10}\s[a-z]{2,10}$)/i;
+		s = '김자바abc'
+		console.log(p.test(s)); // true
+		
+		// 이미지 파일
+		p = /(\.png|\.jpg|\.gif|\.jpeg)$/;
+		
+	
+	</script>
+
+</body>
+</html>

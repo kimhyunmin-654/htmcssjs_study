@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>폼 컨트롤</h3>
+	
+	<form name="myForm">
+		<p>
+			<input type="text" name="id" placeholder="아이디" style="width: 100px;">
+			<input type="text" name="name" placeholder="이름" style="width: 100px;">
+			<button type="button" onclick="selectAdd();">추가</button>
+		</p>
+		<p>
+			친구목록 : <select name="friend"></select>
+		</p>
+		<p>
+			좋아하는 과목 : 
+			<select name="subject" multiple="multiple" size="5">
+				<option value="java">자바</option>
+				<option value="oracle">오라클</option>
+				<option value="html">HTML</option>
+				<option value="css">css</option>
+				<option value="javascript">자바스크립트</option>
+				<option value="servlet">서블릿</option>
+			
+			</select>
+		</p>
+		<p>
+			<label for="chk">
+				동의
+				<input type="checkbox" name="chk" value="1">
+			</label>
+		</p>
+		<p>
+			<button type="button" onclick="selectItem()">선택항목</button>
+			<button type="button" onclick="selectRemove()">선택항목 삭제</button>
+			<button type="button" onclick="selectAll()">과목모두선택</button>
+			<button type="button" onclick="selectSubject()">선택과목들</button>
+			<button type="button" onclick="checkToggle()">체크토글</button>
+			<button type="button" onclick="checkResult()">체크확인</button>
+		</p>
+		
+	</form>
+	
+	<script type="text/javascript">
+	window.addEventListener('DOMContentLoaded', () => {
+		const el = document.myForm.friend;
+		
+		// select 태그의 option 추가
+		el[0] = new Option('김자바', 'kim'); // text, value
+		el[1] = new Option('이자바', 'lee');
+		el[2] = new Option('다자바', 'da');
+		
+		// 선택
+		// el.value = 'lee';
+		el.selectedIndex = 1;
+		
+	});
+	
+	function selectAdd() {
+		const f = document.myForm;
+		const selectEL = f.friend;
+		
+		let id = f.id.value;
+		let name = f.name.value;
+		
+		if(id && name) {
+			selectEL[selectEL.length] = new Option(name, id);
+		}
+	}
+	
+	function selectItem() {
+		// 선택된 친구 목록
+		const f = document.myForm;
+		
+		let item = f.friend.value;
+		
+		if(! item) {
+			f.freiend.focus();
+			return;
+		}
+		alert(item);
+		
+	}
+	
+	function selectRemove() {
+		// 선택된 친구 삭제
+		const f = document.myForm;
+		
+		if(! confirm('삭제 ? ')) {
+			return;
+		}
+		
+		
+		// f.friend.length : 요소(option)의 개수
+		if(f.friend.length) {
+			f.friend[f.friend.selectedIndex] = null;
+		}
+	}
+
+	function selectAll() {
+		// 전체과목 선택
+		const f = document.myForm;
+		
+		for(let el of f.subject) {
+			el.selected = true;	
+			
+		}
+		
+	}
+
+	function selectSubject() {
+		// 선택된 과목들
+		const f = document.myForm;
+		
+		let s = '';
+		
+		/*
+		for(let i = 0; i < f.subject.length; i++) {
+			// let el = f.subject.options[i];
+			let el = f.subject[i];
+			if(el.selected) {
+				s += `${el.text}, ${el.value} | `;
+			}
+		}
+		*/
+		for(let el of f.subject) {
+			if(el.selected) {
+				s += `${el.text}, ${el.value} | `;
+			}
+		}
+		
+		alert(s);
+		
+	}
+
+	function checkToggle() {
+		const f = document.myForm;
+		
+		f.chk.checked = ! f.chk.checked;
+	}
+	
+	function checkResult() {
+		const f = document.myForm;
+		
+		if(f.chk.checked) {
+			alert('선택 됨');
+		} else {
+			alert('선택 안됨');
+		}
+		
+	}
+
+	
+		
+	</script>
+
+</body>
+</html>

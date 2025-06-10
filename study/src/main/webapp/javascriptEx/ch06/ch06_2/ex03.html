@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>input 이벤트</h3>
+	<!-- 
+	
+	 - input 이벤트
+		: <input>, <select>, <textarea> 요소의 value가 바뀔때 발생
+	 -->
+	 
+	 <p>input 이벤트를 이용하여 한글 입력 제한</p>
+	 
+	 <p>한글 가능 : <input type="text"> </p>
+	 
+	 <p>한글 제한 : <input type="text" class="notKorean"></p>
+	 <p>한글 제한 : <input type="text" class="notKorean"></p>
+	 <p>한글 제한 : <input type="text" class="notKorean"></p>
+	 <p>한글 제한 : <input type="text" class="notKorean"></p>
+
+	 <p>한글 가능 : <input type="text"> </p>
+	 
+	 <script type="text/javascript">
+	 	const inputELS = document.querySelectorAll('input.notKorean');
+	 	
+	 	const fn = e => {
+	 		const target = e.currentTarget;
+	 		target.value = target.value.replace(/[ㄱ-ㅎㅏ-ㅣ가-힣]/g, '');
+	 	};
+	 	
+	 	// 한글에 입력 제한은 잘 되지만 
+	 	// 영문를 입력하다 한글을 입력하면 앞 문자가 지워질 가능성이 있음
+	 	inputELS.forEach(el => el.addEventListener('input', e => fn(e)));
+	 </script>
+	 
+</body>
+</html>

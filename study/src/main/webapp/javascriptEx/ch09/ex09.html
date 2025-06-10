@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>dataset</h3>
+	
+	<div id="subject"
+		data-num="3"
+		data-classNum="2"
+		data-index-number="123"
+		data-subject="java">
+		dataset예제
+	</div>
+	
+	<script type="text/javascript">
+		const el = document.querySelector('div#subject');
+		let s;
+		
+		s = el.getAttribute('data-num'); // '3'
+		console.log(s);
+		s = el.getAttribute('data-classNum'); // '2'
+		console.log(s);
+		s = el.getAttribute('data-classnum'); // '2'
+		console.log(s);
+		console.log('--------------------');
+
+		// dataset : data- 시작하는 html 속성과 함꼐 사용
+		console.log(el.dataset.num); // '3'
+		console.log(el.dataset.classNum); // undefined
+		console.log(el.dataset.classnum); // '2'
+		console.log(el.dataset.indexNumber); // '123'
+		console.log(el.dataset.subject); // 'java'
+		
+		
+		
+	</script>
+
+</body>
+</html>

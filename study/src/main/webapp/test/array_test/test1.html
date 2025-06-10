@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>할 일 목록 관리</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+        h3 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: #3498db;
+            color: #fff;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .todo-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        .todo-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .todo-item input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .todo-item span {
+            flex: 1;
+            font-size: 16px;
+        }
+        .todo-item button {
+            background-color: #e74c3c;
+        }
+        .todo-item button:hover {
+            background-color: #c0392b;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .summary {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h3>할 일 목록 관리</h3>
+    <div class="container">
+        <div class="input-group">
+            <input type="text" id="todoInput" placeholder="할 일을 입력하세요">
+            <button onclick="addTodo()">추가</button>
+        </div>
+        <ul class="todo-list" id="todoList"></ul>
+        <div class="controls">
+            <button onclick="filterTodos('all')">모두 보기</button>
+            <button onclick="filterTodos('completed')">완료된 항목</button>
+            <button onclick="filterTodos('incomplete')">미완료 항목</button>
+            <button onclick="sortTodos()">이름순 정렬</button>
+            <button onclick="showSummary()">선택된 항목 요약</button>
+        </div>
+        <div class="summary" id="summary"></div>
+    </div>
+
+    <script>
+        // 할 일 목록 배열 (초기 데이터 예시)
+        let todos = [
+            { id: 1, text: '공기놀이 배우기', completed: false },
+            { id: 2, text: '자바스크립트 공부', completed: true },
+            { id: 3, text: '운동하기', completed: false }
+        ];
+
+        // TODO: 아래 함수들을 작성하여 배열 문법을 연습하세요.
+        // 힌트: 각 함수에서 배열 메서드(forEach, map, filter, push, splice 등)를 적극 활용하세요.
+
+        // 1. addTodo(): 입력값을 todos 배열에 추가하고 목록을 다시 렌더링
+        // - 입력값이 비어 있으면 경고 표시
+        // - 새로운 할 일 객체: { id: 고유ID(예: Date.now()), text: 입력값, completed: false }
+        // - 입력 필드 초기화
+        function addTodo() {
+            let input = document.getElementById('todoInput');
+            const text = input.value.trim();
+            
+            // 입력갑 검증
+            if(!text) {
+            	alert('할 일을 입력해주세요.');
+            	return;
+            }
+            
+            // 새 할 일 객체 추가 (고유 ID로 Date.now() 사용)
+            todos.push({
+            	id: Date.now(), // 고유 ID 생성
+            	text: text,
+            	completed: false
+            });
+            
+            // 입력 필드 초기화
+            input.value = '';
+            
+            // 목록 다시 렌더링
+            renderTodos(todos);
+            
+                        
+        }
+
+        // 2. renderTodos(todosToShow): todos 배열을 받아 HTML 목록으로 렌더링
+        // - todoList(ul)에 li 요소로 각 할 일을 추가
+        // - 각 li는 체크박스(완료 상태), 텍스트, 삭제 버튼 포함
+        // - 체크박스 클릭 시 toggleTodo(id) 호출, 삭제 버튼 클릭 시 removeTodo(id) 호출
+        function renderTodos(todosToShow) {
+            const todoList = document.getElementById('todoList');
+            
+            // 기존 목록 초기화
+            todoList.innerHTML = '';
+            
+            // 각 할 일을 <li> 요소로 렌더링
+            todosToShow.forEach(todo => {
+            	const li = document.createElement('li');
+            	li.className = 'todo-item';
+            	
+            	// 체크박스
+            	const checkbox = document.createElement('input');
+            	checkbox.type = 'checkbox';
+            	checkbox.checked = todo.completed;
+            	checkbox.onclick = () => toggleTodo(todo.id);
+            	
+            	// 텍스트
+            	const span = document.createElement('span');
+            	span.textContent = todo.text;
+            	if(todo.completed) {
+            		span.style.textDecoration = 'line-through'; // 완료된 항목 취소선
+            	}
+            	
+            	// 삭제 버튼
+            	const button = document.createElement('button');
+            	button.onclick = () => removeTodo(todo.id);
+            	
+            	// li에 요소 추가
+            	li.appendChild(checkbox);
+            	li.appendChild(span);
+            	li.appendChild(button);
+            	
+            	// 목록에 추가
+            	todoList.appendChild(li);
+            	
+            });
+            
+        }
+
+        // 3. toggleTodo(id): 해당 ID의 할 일 완료 상태를 토글
+        // - todos 배열에서 해당 항목 찾아 completed 속성 반전
+        // - 목록 다시 렌더링
+        function toggleTodo(id) {
+            todos = todos.map(todo => 
+            todo.id === id ? { ...todo, completed: !todo.comopleted } : todo );
+            
+            renderTodos(todos);
+        }
+
+        // 4. removeTodo(id): 해당 ID의 할 일 삭제
+        // - todos 배열에서 해당 항목 제거
+        // - 목록 다시 렌더링
+        function removeTodo(id) {
+            // confime으로 삭제 확인
+            if (!confirm('이 할 일을 삭제하시겠습니까?')) return;
+            
+            // todos 배열에서 해당 ID 항목 제거
+            todos = todos.filter(todo => todo.id !== id);
+            
+            // 목록 다시 렌더링
+            renderTodos(todos);
+        }
+
+        // 5. filterTodos(type): 'all', 'completed', 'incomplete'에 따라 목록 필터링
+        // - type에 따라 todos 배열 필터링 후 renderTodos 호출
+        function filterTodos(type) {
+            let filteredTodos;
+            
+            // type에 따라 필터링
+            if(type === 'all') {
+            	filteredTodos = todos;
+            } else if(type === 'completed') {
+            	filteredTodos = todos.filter(todo => todo.completed);
+            } else if(type === 'incomplete') {
+            	filteredTodos = todos.filter(todo => !todo.complted);
+            }
+            
+            // 필터링된 목록 렌더링
+            renderTodos(filteredTodos);
+            
+        }
+
+        // 6. sortTodos(): todos 배열을 텍스트 기준으로 알파벳순 정렬
+        // - 목록 다시 렌더링
+        function sortTodos() {
+            todos = [...todos].sort((a,b) => a.text.localeCompare(b.text));
+            
+            // 목록 다시 렌더링
+            renderTodos(todos);
+        }
+
+        // 7. showSummary(): 완료된 항목의 텍스트를 요약해 표시
+        // - 완료된 항목만 추출해 summary div에 표시
+        // - 예: "완료된 항목: 자바스크립트 공부, 운동하기"
+        function showSummary() {
+            const summaryDiv = document.getElementById('summary');
+            
+            // 완료된 항목 추출
+            const completedTodos = todos.filter(todo => todo.completed);
+            
+            // 텍스트만 추출해 문자열로 결합
+            const summaryText = completedTodos.length
+            	? `완료된 항목: ${completedTodos.map(todo => todo.text).join(', ')}`
+            	: '완료된 항목이 없습니다.';
+            // 요약 표시
+            summaryDiv.textContent = summaryText;
+        }
+
+        // 초기 렌더링
+        window.addEventListener("DOMContentLoaded", () => {
+            renderTodos(todos);
+        });
+    </script>
+</body>
+</html>

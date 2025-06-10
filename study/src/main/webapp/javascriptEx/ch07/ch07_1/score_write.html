@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.7.2/css/all.css">
+
+<style type="text/css">
+* { padding: 0; margin: 0; }
+*, *::after, *::before { box-sizing: border-box; }
+
+body {
+	font-family:"Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
+	font-size: 14px;
+	color: #222;
+}
+
+a { color: #222; text-decoration: none; cursor: pointer; }
+a:active, a:hover { color: #f28011; text-decoration: underline; }
+
+/* form-control */
+.btn {
+	color: #333;
+	border: 1px solid #999;
+	background-color: #fff;
+	padding: 5px 10px;
+	border-radius: 4px;
+	font-weight: 500;
+	cursor:pointer;
+	font-size: 14px;
+	font-family: "맑은 고딕", 나눔고딕, 돋움, sans-serif;
+	vertical-align: baseline;
+}
+.btn:active, .btn:focus, .btn:hover {
+	background-color: #f8f9fa;
+	color:#333;
+}
+.btn[disabled], fieldset[disabled] .btn {
+	pointer-events: none;
+	cursor: default;
+	opacity: .65;
+}
+
+.form-control {
+	border: 1px solid #999; border-radius: 4px; background-color: #fff;
+	padding: 5px 5px; 
+	font-family: "맑은 고딕", 나눔고딕, 돋움, sans-serif;
+	vertical-align: baseline;
+}
+.form-control[readonly] { background-color:#f8f9fa; }
+
+textarea.form-control { height: 170px; resize : none; }
+
+.form-select {
+	border: 1px solid #999; border-radius: 4px; background-color: #fff;
+	padding: 4px 5px; 
+	font-family: "맑은 고딕", 나눔고딕, 돋움, sans-serif;
+	vertical-align: baseline;
+}
+.form-select[readonly] { background-color:#f8f9fa; }
+
+textarea:focus, input:focus { outline: none; }
+input[type=checkbox], input[type=radio] { vertical-align: middle; }
+
+/* table */
+.table { width: 100%; border-spacing: 0; border-collapse: collapse; }
+.table th, .table td { padding-top: 10px; padding-bottom: 10px; }
+
+.table-border thead > tr { border-top: 2px solid #212529; border-bottom: 1px solid #ced4da; }
+.table-border tbody > tr { border-bottom: 1px solid #ced4da; }
+.table-border tfoot > tr { border-bottom: 1px solid #ced4da; }
+.td-border td { border: 1px solid #ced4da; }
+
+.clear::after { content:''; display:block; clear: both; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+/* container */
+.body-container { width: 500px; margin: 30px auto; }
+.body-title { width:100%; font-size: 16px; font-weight: bold; padding: 13px 0; }
+
+.table-form { margin-top: 10px; }
+.table-form td { padding: 7px 0; }
+.table-form tr:first-child {  border-top: 2px solid #212529; }
+.table-form tr > td:first-child { width: 100px; text-align: center; background: #f8f9fa; }
+.table-form tr > td:nth-child(2) { padding-left: 10px; }
+
+.table-form input[type=text], .table-form input[type=file], .table-form input[type=date], .table-form textarea {
+	width: 97%; }
+</style>
+
+<script type="text/javascript">
+/*
+ - 학번은 4~10 자 이내의 숫자만 가능
+ - 이름은 한글 2~5자 이내
+ - 점수는 0~100 사이만
+*/
+
+function isValidScore(strNum) {
+	let p = /^\d{1,3}$/;
+	
+	if(! p.test(strNum)) {
+		return false;	
+	}
+	
+	if(parseInt(strNum) < 0 || parseInt(strNum) > 100) {
+		return false;	
+	}
+	
+	return true;
+}
+
+
+
+
+function check(e) {
+	const f = document.scoreForm;
+	let p;
+	
+	p = /^\d{4,10}$/;
+	if(! p.test(f.hak.value) ) {
+		f.hak.focus();
+		e.preventDefault(); // submit 이벤트를 취소
+		return false;
+	}
+	
+	p = /^[가-힣]{2,5}$/;
+	if(! p.test(f.name.value) ) {
+	    f.name.focus();
+	    e.preventDefault(); 
+	    return false;
+	}
+	
+	/*
+	if(! f.birth.value) {
+		f.birth.focus();
+		e.preventDefault(); 
+		return false;
+	}
+	*/
+	
+	let scoreELS = document.querySelectorAll('form .score');
+	for(let el of scoreELS) {
+		// p = /^(?:[1-9]?\d|100)$/;	
+		// p = /^(?:\d{1-9}|100)$/;	
+		p = /^([0-9]|[1-9][0-9]|100)$/;	
+		//if(! isValidScore(el.value)) {
+		if(! p.test(el.value)) {
+			alert('1~100까지의 숫자만 가능합니다.');
+			f.birth.focus();
+			e.preventDefault(); 
+			return false;
+			}
+		}
+		
+	return true;
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+	// scoreForm 에서 submit 이벤트가 발생하면 check 함수 실행
+	document.scoreForm.addEventListener('submit', check);
+});
+
+function server_ok() {
+	alert('ok...');
+}
+
+</script>
+</head>
+<body>
+
+<div class="body-container">
+	<div class="body-title">
+	    <h3><i class="fa-solid fa-user-graduate"></i> 성적처리</h3>
+	</div>
+
+	<form name="scoreForm" action="javascript:server_ok()" method="post">
+		<table class="table table-border table-form">
+		<tr>
+			<td>학번</td>
+			<td>
+				<input type="text" name="hak" class="form-control" maxlength="10">
+			</td>
+		</tr>
+
+		<tr>
+			<td>이름</td>
+			<td>
+				<input type="text" name="name" class="form-control" maxlength="10">
+			</td>
+		</tr>
+
+		<tr>
+			<td>생년월일</td>
+			<td>
+				<input type="date" name="birth" class="form-control">
+			</td>
+		</tr>
+
+		<tr>
+			<td>국어</td>
+			<td>
+				<input type="text" name="kor" class="form-control score" maxlength="3">
+			</td>
+		</tr>
+
+		<tr>
+			<td>영어</td>
+			<td>
+				<input type="text" name="eng" class="form-control score" maxlength="3">
+			</td>
+		</tr>
+
+		<tr>
+			<td>수학</td>
+			<td>
+				<input type="text" name="mat" class="form-control score" maxlength="3">
+			</td>
+		</tr>
+		</table>
+
+		<table class="table">
+		<tr>
+			<td align="center" colspan="2">
+				<input type="submit" value=" 등록완료 " class="btn">	
+				<input type="reset" value=" 다시입력 " class="btn">	
+				<input type="button" value=" 등록취소 " class="btn">	
+			</td>
+		</tr>
+		</table>
+	</form>
+
+</div>
+
+</body>
+</html>

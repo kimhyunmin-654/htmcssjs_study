@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>노드 복제</h3>
+	
+	<div class="subject-item">
+		<p class="subject">자바</p>
+		<p class="subject">HTML</p>
+		<p class="subject">CSS</p>
+	</div>
+	<hr>
+	
+	<div class="list-item"></div>
+	<hr>
+	
+	<button type="button" class="btnOk"> 확인 </button>
+
+	<script type="text/javascript">
+		const subjectEL = document.querySelector('.subject-item');
+		const listEL = document.querySelector('.list-item');
+		
+		const pELS = subjectEL.children;
+		for(let pEL of pELS) {
+			pEL.addEventListener('click', function(e) {
+				alert(pEL.textContent);
+			});
+			
+		}
+		
+				
+		const btnEL = document.querySelector('.btnOk');
+		btnEL.addEventListener('click', function() {			
+			const pELS = subjectEL.children;
+			for(let pEL of pELS) {
+				const pc = pEL.cloneNode(true); // true : 자식요소도 복제
+				listEL.appendChild(pc);
+			}
+ 			
+			
+			/*
+			const cn = subjectEL.cloneNode(true);
+ 				// true : 자식요소도 복제
+ 				// 이벤트는 복제되지 않음
+			listEL.appendChild(cn);
+ 			*/
+		});
+		
+	</script>
+
+</body>
+</html>

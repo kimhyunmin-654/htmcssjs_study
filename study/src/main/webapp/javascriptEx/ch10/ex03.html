@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3> 텍스트 파일 읽기 </h3>
+	
+	<div style="margin: 5px;">
+		<form name="frm">
+			<p> <input type="file" name="selectFile" multiple="multiple"> </p>
+			<p> <button type="button" onclick="sendOk();"> 등록 </button></p>
+		</form>
+	</div>
+	<hr>
+	<textarea rows="10" cols="70" id="content"></textarea>
+	
+	<script type="text/javascript">
+		const inputEL = document.querySelector('form input[name=selectFile]');
+		
+		inputEL.onchange = function(e) {
+			if(! inputEL.value) {
+				return;
+			}
+			
+			const file = inputEL.files[0];
+			
+			let reader = new FileReader();
+					// File의 내용을 읽을 수 있는 기능 재공
+			reader.onload = function(ev) {
+					// onload : 읽어 들이기가 성공한 경우 발생되는 이벤트
+					s = ev.target.result; // 읽어 들인 파일의 내용
+					document.getElementById('content').value = s;
+			};
+			reader.readAsText(file); // utf-8
+			
+		};
+		
+		function sendOk() {
+			alert('ok...')
+		}
+	</script>
+
+</body>
+</html>

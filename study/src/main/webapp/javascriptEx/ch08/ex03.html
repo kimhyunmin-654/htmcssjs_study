@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>정규식 패턴</h3>
+	
+	<script type="text/javascript">
+		var s, p;
+		
+		// . : 한문자
+		p = /a.s/;
+		s = 'abs';
+		console.log(p.test(s)); // true
+		s = 'as';
+		console.log(p.test(s)); // false
+		
+		// x* : 앞문자 x와 0개이상 일치
+		// .* : 모든 문자
+		
+		p = /test a*b/;
+		s = 'test aab';
+		console.log(p.test(s)); // true
+		s = 'test b';
+		console.log(p.test(s)); // true
+		s = 'test ax';
+		console.log(p.test(s)); // false
+		s = 'user aab';
+		console.log(p.test(s)); // false
+
+		// ^ : ~로 시작 $ : ~로 끝
+		p = /^자바.*/; // 자바로 시작
+		s = '자바 사랑';
+		console.log(p.test(s)); // true
+		s = '이자바';
+		console.log(p.test(s)); // false
+	
+		p = /.*자바$/; // 자바로 끝
+		s = '자바 사랑';
+		console.log(p.test(s)); // false
+		s = '이자바';
+		console.log(p.test(s)); // true
+		
+		p = /^자바(.*)웹$/; // 자바로 시작하고 웹으로 끝
+		s = '자바 스프링 웹';
+		console.log(p.test(s)); // true
+		
+	</script>
+
+</body>
+</html>

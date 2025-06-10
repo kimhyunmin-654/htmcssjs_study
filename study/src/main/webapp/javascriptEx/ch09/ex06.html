@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>노드 이동</h3>
+	
+	<div class="div1">
+		<p>HTML</p>
+		<p>CSS</p>
+		<p>javascript</p>
+	</div>
+	<hr>
+	
+	<div class="div2"></div>
+	<hr>
+	
+	<div>
+		<button type="button" class="btnOk"> 이동 </button>
+	</div>
+	
+	<script type="text/javascript">
+		const btnEL = document.querySelector('.btnOk');
+		const divEL1 = document.querySelector('.div1');
+		const divEL2 = document.querySelector('.div2');
+		
+		btnEL.addEventListener('click', e => {
+			divEL2.appendChild(divEL1.firstElementChild);
+		});
+				
+	</script>
+
+</body>
+</html>

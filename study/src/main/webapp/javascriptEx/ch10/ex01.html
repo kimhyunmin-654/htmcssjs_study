@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3> 파일 용량 체크 </h3>
+
+	<div style="margin: 5px;">
+		<form name="frm">
+			<p> <input type="file" name="selectFile" multiple="multiple"> </p>
+			<p> <button type="button" onclick="sendOk();"> 등록 </button></p>
+		</form>
+	</div>
+	
+	<script type="text/javascript">
+		function checkFilesize(file) {
+			let maxSize = 10 * 1024 * 1024;
+			
+			let fileSize = 0;
+			for(let f of file.files) {
+				fileSize += f.size;
+			}
+			
+			console.log(fileSize + ' bytes.');
+			
+			return maxSize >= fileSize;
+			
+		}
+		function sendOk() {
+			const f = document.frm;
+			
+			if(! f.selectFile.value) {
+				alert('파일을 선택하세요');
+				f.selectFile.focus();
+				return;
+			}
+			
+			if( ! checkFilesize(f.selectFile)) {
+				alert('최대 용량은 10MB 입니다.');
+				f.selectFile.focus();
+				return;
+			}
+			
+			alert('ok');
+			
+		}
+	
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3> form 접근 : document.forms 로 접근 </h3>
+	
+	<form name="myForm">
+		<p> 이름 : <input type="text" name="name"> </p>
+		<p> 과목 : <input type="text" name="subject"> </p>
+		<p> 점수 : <input type="text" name="score"> </p>
+		<p> <button type="button" onclick="send();"> 확인 </button></p>
+	</form>
+	
+	<script type="text/javascript">
+		/*
+			- document.forms
+			  : HTML 문서 내의 모든 <form> 태그를 HTMLCollection 형태로 반환
+			  : 각 폼은 배열처럼 인덱스로 접근하거나, name 속성을 접근할 수 있다.
+			- form.elements
+			  : 해당 <form> 내의 모든 폼 컨트롤 요소
+			  	(input, select, textarea, button 등)를
+			  	포함하는 HTMLFormControlsCollection을 반환
+			  : 인덱스 또는 name 속성으로 개별 요소에 접근 가능
+		*/
+		
+		function send() {
+			const f = document.forms[0];
+			
+			for(let i=0; i< f.elements.length-1; i++) {
+				if(! f.elements[i].value) {
+					alert('필수입력사항입니다.');
+					f.elements[i].focus();
+					return;
+				}	
+			}
+			
+			let s = `${f.name.value}, ${f.subject.value}, ${f.score.value}`;
+			alert(s);
+		}
+	
+	</script>
+
+</body>
+</html>

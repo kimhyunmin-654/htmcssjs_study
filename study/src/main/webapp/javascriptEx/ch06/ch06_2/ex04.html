@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+<script type="text/javascript">
+window.addEventListener('load', () => {
+	// 마우스 우측 막기
+	document.addEventListener('mousedown', function(e) {
+		if(e.button === 2 || e.button === 3) {
+			alert('마우스 우측 누르면 혼난다.')
+		}
+		
+	});
+	
+	document.addEventListener('keydown', e => {
+		if(e.key === 'F12') {
+			// alert('개발자 도구 확인 불가');
+			e.preventDefault();
+		}
+		
+		// Ctrl+shift+i : 개발자 도구 단축키
+		if (e.ctrlKey && e.shiftKey && (e.key === 'i' || e.key === 'I')) {
+    		e.preventDefault();
+		}
+		
+		// 크롬 메뉴의 더보기로 개발자 도구 보기가 가능
+		
+		
+		
+	});
+	
+	
+});
+</script>
+
+</head>
+<body>
+
+	<h3>keyEvent - 마우스 우측, F12 금지</h3>
+
+</body>
+</html>

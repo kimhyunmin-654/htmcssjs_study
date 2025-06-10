@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>정규식 패턴</h3>
+	
+	<script type="text/javascript">
+		var s, p;
+		
+		// 영문자로 시작하고 영문, 띄아쓰기만 가능
+		// x(?=y) : x다음에 y가 나오는 경우 참
+		// p = /^[a-z][a-z\s]*$/i;
+		p = /^(?=[a-z])[a-z\s]*$/i;
+		s = ' kor java';
+		console.log(p.test(s)); // false
+		s = 'kor java';
+		console.log(p.test(s)); // true
+		
+		// 자바, 웹, java, web 존재여부
+		p = /(자바|웹|java|web)/i;
+		s = '오라클 스프링 서블릿';
+		console.log(p.test(s)); // false
+		
+		s = '오라클 java 서블릿';
+		console.log(p.test(s)); // true
+
+		// 가 : \uac00
+		// 힣 : \ud7a3
+		p = /^[가-힣]+$/; // 한글 한자이상
+		s = '오라클';
+		console.log(p.test(s)); // true		
+		s = 'ㅋㅋㅋ';
+		console.log(p.test(s)); // false
+		
+	</script>
+
+</body>
+</html>

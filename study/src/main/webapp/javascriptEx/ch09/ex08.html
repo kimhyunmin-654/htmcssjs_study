@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+<style type="text/css">
+.layout {
+	width: 300px; padding: 70px; text-align: center;
+}
+
+.yb {
+	background: yellow;
+}
+
+.gb {
+	background: green;
+}
+
+.border {
+	border: 5px dotted gray;
+}
+
+.none { display: none; }
+</style>
+</head>
+<body>
+
+		<h3>class</h3>
+
+		<div class="layout">클래스 추가 및 삭제</div>
+		<hr>
+		
+		<p>
+			<button type="button" class="btn1"> 클래스 추가 </button>
+			<button type="button" class="btn2"> 클래스 토글 </button>
+			<button type="button" class="btn3"> 클래스 제거 </button>
+			<button type="button" class="btn4"> border 클래스 존재여부 </button>
+			<button type="button" class="btn5"> 클래스 교체 </button>
+			<button type="button" class="btn6"> show / hide </button>
+		</p>
+		
+		<script type="text/javascript">
+			const layoutEL = document.querySelector('.layout');
+			
+			document.querySelector('.btn1').addEventListener('click', e => {
+				// 클래스 추가
+				
+				// classList : 클래스 속성의 컬렉션(읽기전용)
+				// add() : 클래스 추가
+				// layoutEL.classList.add('yb');
+				// layoutEL.classList.add('border');
+				layoutEL.classList.add('yb', 'border');
+			});
+
+			document.querySelector('.btn2').addEventListener('click', e => {
+				// toggle() : 인자가 하나인 경우
+				//	클래스가 존재하면 제거후 false 반환
+				//	클래스가 존재하지 않으면 추가후 true 반환
+				layoutEL.classList.toggle('border');
+				
+				/*
+					// n이 10보다 적으면 클래스 추가
+					let n = 5;
+					layoutEL.classList.toggle('yb', n < 10);
+				*/
+				
+			});
+			
+			document.querySelector('.btn3').addEventListener('click', e => {
+				// layoutEL.classList.remove('yb');
+				// layoutEL.classList.remove('border');
+				layoutEL.classList.remove('border', 'yb', 'gb');
+			});
+
+			document.querySelector('.btn4').addEventListener('click', e => {
+				// 클래스 존재 유무 확인
+				let b = layoutEL.classList.contains('border');
+				alert(b);
+			});
+
+			document.querySelector('.btn5').addEventListener('click', e => {
+				// 교체 : 존재하는 경우만 교체
+				layoutEL.classList.replace('yb', 'gb');
+			});
+			
+			document.querySelector('.btn6').addEventListener('click', e => {
+				layoutEL.classList.toggle('none');
+			});			
+		</script>
+
+
+</body>
+</html>
