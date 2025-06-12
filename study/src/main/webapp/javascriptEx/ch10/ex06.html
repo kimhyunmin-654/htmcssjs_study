@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+<style type="text/css">
+.container { width: 500px; margin: 30px auto;}
+
+.image-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 5px;
+	width: 450px;
+	margin: 10px 0;
+	
+}
+
+.image {
+	object-fit: cover;
+	width: 150px;
+	height: 150px;
+}
+</style>
+</head>
+<body>
+
+	<h3>다중 파일 미리보기</h3>
+	
+	<div class="container">
+		<form name="frm">
+			<p>
+				<input type="file" name="selectFile" accept="image/*"
+					multiple onchange="imagePreView(this);">
+			</p>
+			<div class="image-container"></div>
+			<p>
+				<button type="button" onclick="sendOk();">등록</button>
+			</p>
+		</form>
+	</div>
+	
+	<script type="text/javascript">
+		function imagePreView(inputEL) {
+			const divEL = document.querySelector('.image-container');
+			divEL.innerHTML = '';
+			
+			if(! inputEL.files) {
+				return;
+			}
+			
+			for(let file of inputEL.files) {
+				const reader = new FileReader();
+				const imgEL = document.createElement('img');
+				imgEL.classList.add('image');
+				
+				reader.onload = e => {
+					imgEL.src = e.target.result;
+					
+					divEL.appendChild(imgEL);
+				};
+				reader.readAsDataURL(file);
+			}
+			
+			
+		}
+		
+		function sendOk() {
+			alert('ok...');
+		}
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>localStorage 예제</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3> localStorage 예제 </h3>
+	
+	<p>
+		<input type="text" id="subject" placeholder="좋아하는 과목">
+		<button type="button" onclick="addSubject();">등록</button>
+		<button type="button" onclick="deleteSubject();">삭제</button>
+	</p>
+	<div id="log"></div>
+
+	<script type="text/javascript">
+		viewSubject();
+
+		function viewSubject() {
+		    let ss = JSON.parse(localStorage.getItem('subject')) || [];
+		    if (!Array.isArray(ss)) ss = [];
+
+		    let s = ss.join(', ');
+		    document.getElementById('log').innerHTML = "좋아하는 과목 : " + s;
+		}
+		function addSubject() {
+			const el = document.getElementById('subject');
+			const s = el.value.trim();
+
+			// 공백 입력은 무시
+			if (!s) return;
+
+			// 기존 데이터 가져오기
+			let ss = JSON.parse(localStorage.getItem('subject')) || [];
+
+			// 중복 허용 시 아래 줄 제거 가능
+			if (ss.includes(s)) {
+				alert("이미 등록된 과목입니다.");
+				return;
+			}
+
+			// 추가 후 저장
+			ss.push(s);
+			localStorage.setItem('subject', JSON.stringify(ss));
+
+			el.value = ''; // 입력창 초기화
+			viewSubject(); // 화면 갱신
+		}
+
+		function deleteSubject() {
+			const el = document.getElementById('subject');
+			let s = el.value.trim();
+
+			let ss = JSON.parse(localStorage.getItem('subject')) || [];
+
+			if (s) {
+				// 특정 과목 삭제
+				let idx = ss.indexOf(s);
+				if (idx === -1) {
+					alert("해당 과목은 존재하지 않습니다.");
+					return;
+				}
+				ss.splice(idx, 1); // 한 개 삭제
+			} else {
+				// 전체 삭제
+				if (!confirm("모든 과목을 삭제하시겠습니까?")) return;
+				ss = [];
+			}
+
+			localStorage.setItem('subject', JSON.stringify(ss));
+			el.value = '';
+			viewSubject();
+		}
+	</script>
+
+</body>
+</html>

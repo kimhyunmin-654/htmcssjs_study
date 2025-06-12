@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<style type="text/css">
+.container { width: 800px; margin: 30px auto; }
+
+div#image-zone * { box-sizing: border-box; }
+div#image-zone {
+	width: 750px;
+	min-height: 130px;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-gap: 5px;
+	align-items: center;
+	border: 1px dotted #00f;
+	margin-top: 5px;
+	padding: 5px;
+}
+
+div#image-zone:empty:before {
+	content:attr(data-placeholder);
+	color: #999;
+	font-size: .9rem;
+	text-align: center;
+	width: 700px;
+}
+
+img.image {
+	object-fit: cover;
+	width: 140px;
+	height: 120px;
+	cursor: pointer;
+	border: 1px solid #eee;
+	border-radius: 3px;
+}
+
+img.image:hover {
+	scale:100.5%;
+}
+
+</style>
+
+</head>
+<body>
+
+	<div class="container">
+		<h3>이미지 미리보기</h3>
+		<form name="frm">
+			<input type="file" name="selectFile" id="selectFile" multiple>
+			<div id="image-zone" 
+				data-placeholder="이곳에 파일을 드래그&드롭 하세요."></div>
+		</form>
+	</div>
+	
+	<script type="text/javascript">
+		const preImageViewer = (imageZoneSelector, inputSelector) => {
+			const imageZoneEL = document.querySelector(imageZoneSelector);
+			const inputEL = document.querySelector(inputSelector);
+			
+			let sel_files = [];
+			
+			const imageAppend = function(imgEL, file) {
+				imgEL.onclick = e => {
+					if(! confirm('이미지를 삭제하시겠습니까 ?')) {
+							return false;	
+						}
+					
+					let target = e.target;
+					let filename = target.getAttribute('data-filename');
+					alert(filename);
+					for(let i = 0; i < sel_files.length; i++) {
+						if(filename === sel_files[i].name ) {
+							sel_files.splice(i, 1);
+						} 
+					}
+					
+					let dt = new DataTransfer();
+					for(let f of sel_files) {
+						dt.items.add(f);
+					}
+					inputEL.files = dt.files;
+					
+					imageZoneEL.removeChild(imgEL);
+					
+				};
+				
+				transfer();
+				
+				imageZoneEL.appendChild(imgEL);
+			};
+			
+			// 첨부된 이미지를 배열에 넣고 미리보기
+			const imageLoader = file => {								
+				for(let f of sel_files) {
+					if(f.name === file.name) {
+						transfer();
+						return;
+					}
+				}
+				
+				/*
+			    // 🔒 중복 방지: sel_files 안에 같은 이름의 파일이 있는지 확인
+			    if (sel_files.some(f => f.name === file.name)) {
+			        alert(`'${file.name}' 파일은 이미 추가되었습니다.`);
+			        return;
+			    }
+				*/
+				
+				
+				sel_files.push(file);
+				
+				const reader = new FileReader();
+				reader.onload = function(e) {
+					let imgEL = document.createElement('img');
+					imgEL.classList.add('image');
+					imgEL.setAttribute('data-filename', file.name);
+					imgEL.src = e.target.result;
+					
+					imageAppend(imgEL, file);
+				};
+				
+				transfer();
+				
+				reader.readAsDataURL(file);
+			};
+			
+			// sel_files[] 에 저장된 file 객체를 <input type="file">로 전송하기
+			const transfer = () => {
+				let dt = new DataTransfer();
+				for(let f of sel_files) {
+					dt.items.add(f);
+				}
+				inputEL.files = dt.files;
+			}
+			
+			inputEL.onchange = e => {
+				const files = e.target.files;
+				
+				/*
+				// begin에서 end-1 인데스까지 요소를 얕은 복사하여 새로운 배열을 만듬
+				const arr = Array.prototype.slice.call(files);
+				for(let f of arr) {
+					imageLoader(f);
+				}
+				*/
+				
+				if(! e.target.files.length) {
+					transfer();
+					return;
+				}
+				
+				for(let f of files) {
+					imageLoader(f);
+				}
+			};
+			
+			imageZoneEL.addEventListener('dragenter', e => {
+				// 드롭 대상위에 올라갔을때 발생
+				e.preventDefault();
+				e.stopPropagation();
+			});
+			
+			imageZoneEL.addEventListener('dragover', e => {
+				// 드롭 대상위로 지나갈때 발생
+				e.preventDefault();
+				e.stopPropagation();
+			});
+
+			imageZoneEL.addEventListener('drop', e => {
+				// drop : 드래그할때 발생
+				e.preventDefault();
+				e.stopPropagation();
+				
+				let files = [];
+				// dataTransfer : 드래그중인 데이터를 저장하거나 전송하는 객체 
+				let dt = e.dataTransfer;
+				files = dt.files;
+				for(let f of files) {
+					imageLoader(f);
+				}
+			});
+			
+		};  
+		
+		window.addEventListener('load', function() {
+			preImageViewer('#image-zone', '#selectFile');
+		});
+		
+	</script>
+
+</body>
+</html>

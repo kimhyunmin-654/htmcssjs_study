@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>sessionStorage</h3>
+	
+	<!-- 
+		- 데이터 보존 기간에 제한이 없음
+		- 데이터 보존 기간에 제한이 있다.(현재 창에서만 유효)
+	 -->
+	 
+	 <p>
+	 	<button type="button" onclick="numCount();">증가</button>
+	 	<button type="button" onclick="numRemove();">삭제</button>
+	 </p>
+	 
+	 <div id="log"></div>
+
+	<script type="text/javascript">
+		viewCounter();
+		
+		function viewCounter() {
+			let cnt = sessionStorage.getItem('count');
+			// let cnt = localStorage.count;
+			cnt = cnt ? cnt : '';
+			
+			document.getElementById('log').innerHTML = '카운트횟수 : ' + cnt;
+		}
+		
+		function numCount() {
+			// 웹 스토리지에 저장된 값 가져오기
+			let cnt = sessionStorage.count;
+			
+			cnt = cnt ? Number(cnt) + 1 : 1;
+			
+			// 웹 스토리지에 저장
+			sessionStorage.count = cnt;
+			// localStorage.setItem('count', cnt);
+			
+			viewCounter();
+		}
+		
+		function numRemove() {
+			delete sessionStorage.count;
+			// localStorage.removeItem('count');
+			viewCounter();
+		}	
+
+	</script>
+
+</body>
+</html>
